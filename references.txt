@@ -1,0 +1,20 @@
+This Project was helped by the following totally tubular online resources:
+
+- Chris Coyiers CSS-tricks: www.css-tricks.com; esp. www.css-tricks.com/pseudo-element-roundup
+
+- Lea Verou's Blog: lea.verou.me; esp. lea.verou.me/css3patterns
+
+- Smashing Magazine tutorials: http://www.smashingmagazine.com/2012/10/04/the-code-side-of-color/
+
+- Bootstrap responsive grid framework: getbootstrap.com
+
+- Google Fonts: google.com/fonts; this project uses Ubuntu, Righteous and Dosis families
+
+- Bootstrap Carousel example: getbootstrap.com/examples/carousel
+
+- icomoon icon font service: icomoon.io
+
+- Logo maker: logogarden.com
+
+- Stack Overflow for everything: stackoverflow.com
+
