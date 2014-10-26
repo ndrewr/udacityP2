@@ -1,0 +1,75 @@
+{
+	"work":[
+		{
+			"employer":"Starbucks",
+			"title":"Barista",
+			"location":"La Jolla, CA", 
+			"dates worked":"Oct 2005 - Mar 2007", 
+			"description":"Energize customers!", 
+		},
+		{
+			"employer":"JET Programme",
+			"title":"Mr. English Teacher",
+			"location":"Soo City, Kagoshima", 
+			"dates worked":"Jul 2007 - Jul 2009", 
+			"description":"Energize Japanese students!", 
+		}
+	],
+	"projects":[
+		{
+			"title":"Barista", 
+			"dates worked":"Oct 2005 - Mar 2007", 
+			"description":"Energize customers!", 
+			"images":[]
+		},
+		{
+			"title":"Mr. English Teacher", 
+			"dates worked":"Jul 2007 - Jul 2009", 
+			"description":"Energize Japanese students!", 
+			"images":[]
+		}
+	],
+	"bio":{
+		"name":"Andrew Roy Chen", 
+		"role":"Chief Triangle", 
+		"welcomeMessage":"Til all are one.", 
+		"contacts":{"mobile":"650-980-4424", "email":"uncle.optimus@gmail.com", "github":"uncleoptimus", "twitter":"uncopt", "location":"Orange County"}, 
+		"skills":[]
+	},
+	"education":{
+		"schools":[
+			{
+				"name":"University of California, San Diego",
+				"location":"La Jolla, CA",
+				"degree":"B.S. Computer Science",
+				"majors":[],
+				"dates attended":"Sept 1999 - Mar 2005",
+				"url":"www.ucsd.edu"
+			},
+			{
+				"name":"Ming Chuan University",
+				"location":"Taipei, Taiwan",
+				"degree":"Masters Degree in Business Administration",
+				"majors":[],
+				"dates attended":"Oct 2009 - Mar 2013",
+				"url":"http://www.mcu.edu.tw"
+			}
+
+		],
+		"onlineCourses":[
+			{
+				"title":"Web Development",
+				"school":"Udacity",
+				"dates attended":"Jan 2014 - Mar 2014",
+				"url":"https://www.udacity.com/course/cs253"
+			},
+			{
+				"title":"Mobile Web Development",
+				"school":"Udacity",
+				"dates attended":"Mar 2014 - May 2014",
+				"url":"https://www.udacity.com/course/cs256"
+			},
+		]
+}
+
+}
