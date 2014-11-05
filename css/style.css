@@ -3,3 +3,391 @@
 /* ------------------------------------------------------------------------
 
 /* GLOBAL STYLES */
+/* Colors */
+.resumeRed {
+	background: linear-gradient( 
+					45deg,
+					#a21b1a,
+					#b24b4a);
+}
+.resumeRed2 {
+	background: #a42117;
+}
+.resumeBlue {
+	background: #081a4f;
+}
+.resumeMaroon {
+	background: #3e0f11;
+}
+.resumeLiteBlue {
+	background: #887cc0;
+}
+.resumeGlass {
+	background: #b6c4db;
+}
+.resumeSteel {
+	background: #d9c9cc;
+}
+.resumeGray {
+	background: #88787b;
+}
+.resumeOrange {
+	background: #e35b31;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?cahfeu');
+	src:url('../fonts/icomoon.eot?#iefixcahfeu') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?cahfeu') format('woff'),
+		url('../fonts/icomoon.ttf?cahfeu') format('truetype'),
+		url('../fonts/icomoon.svg?cahfeu#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='icon-'], [class*=' icon-'] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-handlogo:before {
+	content: '\e617';
+}
+.icon-location:before {
+	content: '\e600';
+}
+.icon-screen:before {
+	content: '\e609';
+}
+.icon-mobile:before {
+	content: '\e60a';
+}
+.icon-tablet:before {
+	content: '\e601';
+}
+.icon-mail:before {
+	content: '\e611';
+}
+.icon-googleplus:before {
+	content: '\e602';
+}
+.icon-facebook:before {
+	content: '\e613';
+}
+.icon-twitter:before {
+	content: '\e615';
+}
+.icon-github:before {
+	content: '\e603';
+}
+.icon-linkedin:before {
+	content: '\e604';
+}
+.icon-mobile2:before {
+	content: '\e605';
+}
+.icon-mail2:before {
+	content: '\e606';
+}
+.icon-location2:before {
+	content: '\e607';
+}
+.icon-github2:before {
+	content: '\e608';
+}
+.icon-github3:before {
+	content: '\e60b';
+}
+.icon-twitter2:before {
+	content: '\e60c';
+}
+.icon-twitter3:before {
+	content: '\e60d';
+}
+.icon-facebook2:before {
+	content: '\e60e';
+}
+.icon-facebook3:before {
+	content: '\e60f';
+}
+.icon-googleplus2:before {
+	content: '\e610';
+}
+.icon-googleplus3:before {
+	content: '\e612';
+}
+.icon-linkedin2:before {
+	content: '\e614';
+}
+.icon-linkedin3:before {
+	content: '\e616';
+}
+
+body {
+	background:
+	radial-gradient(black 15%, transparent 16%) 0 0,
+	radial-gradient(black 15%, transparent 16%) 8px 8px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#a21b1a;
+	background-size:16px 16px;
+	font: 1em 'Ubuntu', sans-serif;
+}
+
+/* Header styles */
+header {
+	background: gray;
+	color: #B6C4DB;
+	font: 2em 'Ubuntu Condensed', sans-serif;
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+
+  	align-items: center;
+}
+
+#name {
+	font: bold 3em 'Ubuntu', sans-serif;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+header>span {
+}
+
+/* Contacts styles */
+#topContacts {
+	list-style: none;
+	width: 100%;
+
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+
+  	justify-content: center;
+
+
+}
+
+#topContacts li {
+	margin: .5em;
+	padding: .5em;
+	color: #fff;
+	border-radius: 2em;
+	font: 1em 'Ubuntu Condensed', sans-serif;
+}
+
+#topContacts .contactBadge {
+	font-size: 1.5em;
+}
+
+#topContacts li:hover .contactBadge {
+	display: none;
+}
+#topContacts li:hover .contactItem {
+	display: inherit;
+}
+
+.contactItem {
+	display: none;
+	margin-right: .5em;
+
+}
+
+#topContacts li span {
+
+}
+
+
+/* Main Element styles */
+#main {
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+
+  	justify-content: center;
+
+}
+
+#main div {
+	padding: 10px;
+	margin: 10px;
+}
+
+#main>* {
+	border-radius: 1em;
+}
+
+
+/* Project styles */
+#projects {
+	width: 100%;
+	height: 400px;
+	border-radius: 1em;
+	border: 1em solid #fff;
+
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+}
+
+#projects>* {
+	border: 1em solid #b6c4db;
+	border-radius: 2em;
+}
+
+#projectScreen {
+	min-width: 300px;
+	min-height: 300px;
+	background: #000;
+}
+
+.projectDetail {
+	overflow: hidden;
+	min-height: 300px;
+
+}
+
+
+
+/* Education styles */
+#education {
+	width: 90%;
+
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+
+
+}
+
+#education h3 {
+	/* rotate the text for fun and profit */
+}
+
+.education-entry {
+	background: #fff;
+	border-radius: 1em;
+}
+
+/* Work Experience styles */
+#workExperience {
+	width: 45%;
+	background: #fff;
+		height: 300px;
+	position: relative;
+	border-radius:.5em;
+	overflow: scroll; /* would prefer to hide the damn scrollbar on scroll */
+}
+
+/* Skills styles */
+#skillsChart {
+	width: 45%;
+	height: 300px;
+	background: #fff;
+	position: relative;
+	border-radius:.5em;
+
+}
+
+#workExperience:before,
+#skillsChart:before {
+	content: '';
+	background: linear-gradient( 
+					to top right,
+					#b6c4db,
+					#fff);
+
+	opacity: .85;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: 2;
+	border-radius:.5em;
+
+}
+#workExperience:hover:before,
+#skillsChart:hover:before {
+	z-index: -1;
+}
+
+.wrapper {
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+
+  	justify-content:	space-around;
+
+  	width: 100%;
+	border-radius: 1em;
+	border: 1em solid #fff;
+}
+
+.contentWrapper {
+	overflow: auto;
+}
+
+/* Map styles */
+#mapDiv {
+	display: none;
+}
+
+
+
+/* Footer styles */
+#letsConnect {
+	font: 2em 'Ubuntu Mono', sans-serif; 
+	text-align: center;
+	background: #081A4F;
+	color: #d9c9cc;
+}
+
+#letsConnect div {
+	font-size: 3em;
+	width: 10em;
+	background: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	border: 3px solid orange;
+	border-radius: 5px;
+}
+
+
+
+

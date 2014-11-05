@@ -14,7 +14,10 @@
 			"dates worked":"Jul 2007 - Jul 2009", 
 			"description":"Energize Japanese students!", 
 		}
-	],
+	]
+};
+
+{
 	"projects":[
 		{
 			"title":"Barista", 
@@ -28,21 +31,37 @@
 			"description":"Energize Japanese students!", 
 			"images":[]
 		}
-	],
+	]
+};
+
+{
 	"bio":{
 		"name":"Andrew Roy Chen", 
 		"role":"Chief Triangle", 
-		"welcomeMessage":"Til all are one.", 
-		"contacts":{"mobile":"650-980-4424", "email":"uncle.optimus@gmail.com", "github":"uncleoptimus", "twitter":"uncopt", "location":"Orange County"}, 
-		"skills":[]
-	},
+		"welcomeMessage":"Well Hello :)", 
+		"contacts":{
+					"mobile":"650-980-4424", 
+					"email":"uncle.optimus@gmail.com", 
+					"github":"uncleoptimus", 
+					"twitter":"uncopt", 
+					"location":"Orange County"
+					}, 
+		"skills":[
+					"javascript", "HTML/CSS3", "jQuery", 
+					"Objective-C/iOS Dev", "Python", "Backbone.js"
+				]
+	}
+};
+
+
+{
 	"education":{
 		"schools":[
 			{
 				"name":"University of California, San Diego",
 				"location":"La Jolla, CA",
 				"degree":"B.S. Computer Science",
-				"majors":[],
+				"majors":["Computer Science"],
 				"dates attended":"Sept 1999 - Mar 2005",
 				"url":"www.ucsd.edu"
 			},
@@ -70,6 +89,5 @@
 				"url":"https://www.udacity.com/course/cs256"
 			},
 		]
-}
-
-}
+	}
+};
