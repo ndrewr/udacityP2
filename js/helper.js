@@ -28,14 +28,17 @@ var HTMLlocation = "<li class='flex-item'><span class='orange-text'>location</sp
 
 var HTMLbioPic = "<img src='%data%' class='biopic'>";
 var HTMLWelcomeMsg = "<span class='welcome-message'>%data%</span>";
+var HTMLblurbMsg = "<p class='blurb-message'>%data%</p>"; //added
+var HTMLteaserMsg = "<div class='teaser-message'><span><span class='icon-handlogo teaserLogo'></span> %data%</span></div>"; //added
 
-var HTMLskillsStart = "<h3 id='skillsH3'>Skills at a Glance:</h3><ul id='skills' class='flex-box'></ul>";
-var HTMLskills = "<li class='flex-item'><span class=''>%data%</span></li>";
+
+var HTMLskillsStart = "<h3 id=''>Skills at a Glance:</h3><ul id='skills' class='flex-box'></ul>";
+var HTMLskills = "<li class=''><span class=''>%data%</span></li>";
 
 //var HTMLworkStart = "<div class='scrollWrapper'><div class='contentWrapper'></div></div>";
-var HTMLworkStart = "<div class='contentWrapper'></div>";
+var HTMLworkStart = "<h3>Work Experience</h3><ul id='workEntries' class=''></ul>";
 
-var HTMLworkEntry = "<div class='work-entry'></div>"; //added this snippet myself
+var HTMLworkEntry = "<li><div class='work-entry'></div></li>"; //added this snippet myself
 var HTMLworkEmployer = "<a href='#'>%data%";
 var HTMLworkTitle = " - %data%</a>";
 var HTMLworkDates = "<div class='date-text'>%data%</div>";
@@ -48,19 +51,20 @@ var HTMLprojectDates = "<div class='date-text'>%data%</div>";
 var HTMLprojectDescription = "<p class='projectWords'>%data%</p>";
 var HTMLprojectImage = "<img id='projectScreen' class='' src='%data%'>";
 
+var HTMLeduStart = "<h3>Education</h3><ul id='schools' class=''></ul>";
 var HTMLschoolStart = "<div class='education-entry'></div>";
-var HTMLschoolName = "<p><a href='#'>%data%";
+var HTMLschoolName = "<p><a href='%url%'>%data%";
 var HTMLschoolDegree = " -- %data%</a></p>";
-var HTMLschoolDates = "<div class='date-text'>%data%</div>";
+var HTMLschoolDates = "<p class='date-text'>%data%</p>";
 var HTMLschoolLocation = "<div class='location-text'>%data%</div>";
-var HTMLschoolMajor = "<em><br>Major: %data%</em>";
+var HTMLschoolMajor = "<em>Major: %data%</em>";
 
 //added a wrapper div for online course entries for styling purposes
 var HTMLonlineClasses = "<h3>Online Classes</h3>";
-var HTMLonlineTitle = "<div class='education-entry'><p><a href='#'>%data%";
-var HTMLonlineSchool = " - %data%</a></p>";
+var HTMLonlineTitle = "<p>%data%</p>";
+var HTMLonlineSchool = "<div class='education-entry'>ONLINE<a href='#'> - %data%</a>";
 var HTMLonlineDates = "<div class='date-text'>%data%</div>";
-var HTMLonlineURL = "<br><a href='#'>%data%</a></div>";
+var HTMLonlineURL = "<a href='%data%'>course link</a></div>";
 
 var internationalizeButton = "<button>Internationalize</button>";
 var googleMap = "<div id='map'></div>";

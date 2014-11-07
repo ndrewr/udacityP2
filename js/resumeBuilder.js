@@ -25,7 +25,7 @@ var work = {
 			"title":"Product Development Associate",
 			"location":"Taipei, Taiwan",
 			"dates":"Jun 2012 - Dec 2012",
-			"description":"Develop new product lines.",
+			"description":"Energize new product lines.",
 		}
 	],
 
@@ -35,12 +35,19 @@ var work = {
 		for (var job in work.jobs) {
 			if(job !== 0) {$(".work-entry:last").append("<hr>");}
 
+			$("#workEntries").append(HTMLworkEntry);
+			$(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer))
+								.append(HTMLworkTitle.replace("%data%", work.jobs[job].title))
+								.append(HTMLworkDates.replace("%data%", work.jobs[job].dates))
+								.append(HTMLworkLocation.replace("%data%", work.jobs[job].location))
+								.append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+/*
 			$(".contentWrapper").append(HTMLworkEntry);
 			$(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer));
 			$(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs[job].title));
 			$(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
 			$(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[job].location));
-			$(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+			$(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description)); */
 		}
 		
 	}
@@ -91,13 +98,14 @@ var projects = {
 // Defines Bio section content and display method
 var bio = {
 	"name":"Andrew Roy Chen",
-	"role":"Front End Sherpa",
-	"welcomeMessage":"Well Hello :)",
+	"role":"< Front End Sherpa >",
+	"welcomeMessage":"welcome to the pimpin' site of",
+	"blurbMessage":"I delight in slick user experience<br> and aspire to craft better.<br> Let's create something awesome.",
+	"teaserMessage":"Oh. Need to know more?",
 	"contacts": {
 			"mobile":"650-980-4424",
 			"mail":"uncle.optimus@gmail.com",
 			"github2":"uncleoptimus",
-			"twitter2":"uncopt",
 			"linkedin":"http://tinyurl.com/linkdinAC",
 			"location":"Orange County"
 		},
@@ -109,14 +117,25 @@ var bio = {
 
 	// Renders html for Bio section content
 	render: function() {
-		$("#sayMyName").prepend(HTMLheaderName.replace("%data%", bio.name));
+		$("#topContacts").prepend(HTMLblurbMsg.replace("%data%", bio.blurbMessage));
 		$("#sayMyName").prepend(HTMLheaderRole.replace("%data%", bio.role));
+		$("#sayMyName").prepend(HTMLheaderName.replace("%data%", bio.name));
+		$("#sayMyName").prepend(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage));
+
 		//$("#selfIntro").append(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage));
 
 		for(var contact in bio.contacts) {
 			$("#topContacts").append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
-			//$("#topContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 		}
+		$("#sayMyName").append(HTMLteaserMsg.replace("%data%", bio.teaserMessage));
+
+		// dynamically adjust height of the teaser msg element
+		var w = $(window).height();
+		var msgtop = $(".teaser-message").offset().top;
+		console.log("Coord 1 is %s and pos 2 is %s", w, msgtop);
+		var adjHeight = w - msgtop;
+		$(".teaser-message").css("height", adjHeight);
+
 
 		$("#skillsChart").append(HTMLskillsStart);
 		for(var skill in bio.skills) {
@@ -165,32 +184,71 @@ var education = {
 	// Renders html for Eduction section content
 	render: function() {
 		/* list out old-school...schooling */
+		$("#education").append(HTMLeduStart);
+
 		for(var school in education.schools) {
-			$("#education").append(HTMLschoolStart);
-			$(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[school].name));
-			$(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[school].degree));
-			$(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[school].datesattended));
-			$(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
+			$("#schools").append(HTMLschoolStart);
+			$(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[school].name).replace("%url%", education.schools[school].url))
+									.append(HTMLschoolDegree.replace("%data%", education.schools[school].degree))
+									.append(HTMLschoolDates.replace("%data%", education.schools[school].datesattended))
+									.append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
 			for(var major in education.schools[school].majors) {
 				$(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]));
 			}
 		}
 
 		/* list out online courses */
-		$("#education").append(HTMLonlineClasses);
+		//$("#education").append(HTMLonlineClasses);
 		for(var course in education.onlineCourses) {
-			$("#education").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title));
-			$(".education-entry:last").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school));
-			$(".education-entry:last").append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].datesattended));
-			$(".education-entry:last").append(HTMLonlineURL.replace("%data%", education.onlineCourses[course].url));
+			$("#schools").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school));
+			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
+									.append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].datesattended))
+									.append(HTMLonlineURL.replace("%data%", education.onlineCourses[course].url));
 
 		}
 	}
 };
 
+$(function() {
+	/* Kickoff Party */
+	bio.render();
+	work.render();
+	education.render();
 
-/* Kickoff Party */
-bio.render();
-projects.render();
-work.render();
-education.render();
+	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em", color: "#e35b31"}, 600, function() {});
+
+});
+
+
+/* ktchen sink */
+// control hover state for chart borders
+$( ".chartBtn" ).hover(function() {
+  $( this ).parent().css("borderColor", "#fff");
+}, function() {
+  $( this ).parent().css("borderColor", "#b6c4db");
+});
+
+// minimize section charts
+var charty = $( this ).parent();
+$( ".chartBtn" ).click(function() {
+
+	$( this ).parent().toggleClass("rolledChart");
+
+	$( this ).parent().find("ul").slideToggle();
+
+
+/*
+	if( charty.hasClass("rolledChart") ) {
+		$( this ).parent().animate({
+							height: "toggle",
+						}, 400, function() {});
+	}
+	else {
+		$( this ).parent().animate({
+							height: "100px",
+						}, 400, function() {});
+	} */
+});
+
+
+
