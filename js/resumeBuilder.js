@@ -15,7 +15,7 @@ var work = {
 		},
 		{
 			"employer":"JET Programme",
-			"title":"Mr. English Teacher",
+			"title":"Mr. American Ambassador Guy",
 			"location":"Soo City, Kagoshima",
 			"dates":"Jul 2007 - Jul 2009",
 			"description":"Energize Japanese students!",
@@ -60,37 +60,42 @@ var projects = {
 			"title":"Mock Site",
 			"datesworked":"Oct 2014",
 			"description":"Produce a sample portfolio layout with CSS effects.",
-			"images":[]
+			"images":["images/keepcalmCodeon.png"]
 		},
 		{
 			"title":"The Blog of Awesome",
 			"datesworked":"Jan 2014 - Mar 2014",
 			"description":"Simply a blog that enables awesomeness to flow from the keyboard.",
-			"images":[]
+			"images":["images/smashbrosInset.png"]
 		},
 		{
 			"title":"368+ Mobile",
 			"datesworked":"Jul 2013 - Aug 2014",
 			"description":"A mobile-optimized web app for 368+",
-			"images":[]
+			"images":["images/nbacares.png"]
 		},
 		{
 			"title":"Acme Digital Product Page",
 			"datesworked":"Jul 2012 - Sept 2012",
 			"description":"Created a product page for a new line of products.",
-			"images":[]
+			"images":["images/icancode.jpg"]
 		}
 	],
 
 	// Renders html for Project section content
 	render: function() {
-		$("#projects").prepend(HTMLprojectImage.replace("%data%", ""));
+		$("#projects").append("<p class='chartBtn'><span>hide</span></p>");
+		
+		//$("#projects").prepend(HTMLprojectImage.replace("%data%", ""));
 
-			$(".projectDetail").prepend("Project... " + HTMLprojectTitle.replace("%data%", projects.projects[0].title));
-			$(".projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked));
-			$(".projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
+		
+		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title));
+		$("#projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked));
+		$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
 
-
+		for(var project in projects.projects) {
+			$("#projectSelector").append(HTMLprojectThumb.replace("%data%", projects.projects[project].images[0]));
+		}
 
 	}
 };
@@ -105,7 +110,7 @@ var bio = {
 	"contacts": {
 			"mobile":"650-980-4424",
 			"mail":"uncle.optimus@gmail.com",
-			"github2":"uncleoptimus",
+			"github2":"https://github.com/uncleoptimus",
 			"linkedin":"http://tinyurl.com/linkdinAC",
 			"location":"Orange County"
 		},
@@ -124,8 +129,14 @@ var bio = {
 
 		//$("#selfIntro").append(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage));
 
+
+		var test_title = /^(http)s?:\/\/.+(uncleoptimus|linkdinAC)$/i;	//fun with regular expressions :D
+
 		for(var contact in bio.contacts) {
-			$("#topContacts").append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+			if( test_title.test(bio.contacts[contact]) ) {
+				$("#topContacts").append(HTMLcontactLink.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+			}
+			else $("#topContacts").append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 		}
 		$("#sayMyName").append(HTMLteaserMsg.replace("%data%", bio.teaserMessage));
 
@@ -214,41 +225,48 @@ $(function() {
 	bio.render();
 	work.render();
 	education.render();
+	projects.render();
 
-	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em", color: "#e35b31"}, 600, function() {});
+	// have this animation fire after user has scrolled at least 10pixels...?
+	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em"}, 600, function() {});
 
+
+
+	/* ktchen sink */
+	// control hover state for chart borders
+	$( ".chartBtn" ).hover(function() {
+		$( this ).parent().css("borderColor", "#fff");
+		}, function() {
+			$( this ).parent().css("borderColor", "#b6c4db");
+		});
+
+	// minimize section charts
+	var charty = $( this ).parent();
+	$( ".chartBtn" ).click(function() {
+
+		$( this ).parent().toggleClass("rolledChart");
+
+		$( this ).parent().find("ul").slideToggle(200);
+
+
+	/*
+		if( charty.hasClass("rolledChart") ) {
+			$( this ).parent().animate({
+								height: "toggle",
+							}, 400, function() {});
+		}
+		else {
+			$( this ).parent().animate({
+								height: "100px",
+							}, 400, function() {});
+		} */
+	});
 });
 
 
-/* ktchen sink */
-// control hover state for chart borders
-$( ".chartBtn" ).hover(function() {
-  $( this ).parent().css("borderColor", "#fff");
-}, function() {
-  $( this ).parent().css("borderColor", "#b6c4db");
-});
-
-// minimize section charts
-var charty = $( this ).parent();
-$( ".chartBtn" ).click(function() {
-
-	$( this ).parent().toggleClass("rolledChart");
-
-	$( this ).parent().find("ul").slideToggle();
 
 
-/*
-	if( charty.hasClass("rolledChart") ) {
-		$( this ).parent().animate({
-							height: "toggle",
-						}, 400, function() {});
-	}
-	else {
-		$( this ).parent().animate({
-							height: "100px",
-						}, 400, function() {});
-	} */
-});
+
 
 
 

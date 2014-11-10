@@ -15,7 +15,9 @@ replace the %data% placeholder text you see in them.
 var HTMLheaderName = "<h1 id='name'>%data%</h1>";
 var HTMLheaderRole = "<span>%data%</span>";
 
+var HTMLchartButton = "<p class='chartBtn'><span>hide</span></p>";
 
+var HTMLcontactLink = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem'>link</a></li>";
 var HTMLcontactGeneric = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem'>%data%</span></li>";
 //var HTMLcontactGeneric = "<li class='resumeOrange'><span class='icon-%badge%'></span><span class=''>%contact%:</span><span class='contactItem'>%data%</span></li>";
 
@@ -32,24 +34,25 @@ var HTMLblurbMsg = "<p class='blurb-message'>%data%</p>"; //added
 var HTMLteaserMsg = "<div class='teaser-message'><span><span class='icon-handlogo teaserLogo'></span> %data%</span></div>"; //added
 
 
-var HTMLskillsStart = "<h3 id=''>Skills at a Glance:</h3><ul id='skills' class='flex-box'></ul>";
+var HTMLskillsStart = "<h3 id=''>Skills at a Glance</h3><ul id='skills' class='flex-box'></ul>";
 var HTMLskills = "<li class=''><span class=''>%data%</span></li>";
 
 //var HTMLworkStart = "<div class='scrollWrapper'><div class='contentWrapper'></div></div>";
 var HTMLworkStart = "<h3>Work Experience</h3><ul id='workEntries' class=''></ul>";
 
 var HTMLworkEntry = "<li><div class='work-entry'></div></li>"; //added this snippet myself
-var HTMLworkEmployer = "<a href='#'>%data%";
-var HTMLworkTitle = " - %data%</a>";
+var HTMLworkEmployer = "<a href='#'>%data%</a>";
+var HTMLworkTitle = "<p> - %data%</p>";
 var HTMLworkDates = "<div class='date-text'>%data%</div>";
 var HTMLworkLocation = "<div class='location-text'>%data%</div>";
 var HTMLworkDescription = "<p><br>%data%</p>";
 
 var HTMLprojectStart = "<div class='project-entry'></div>";
-var HTMLprojectTitle = "<h2><a class='projectDate' href='#'>%data%</a></h2>";
-var HTMLprojectDates = "<div class='date-text'>%data%</div>";
-var HTMLprojectDescription = "<p class='projectWords'>%data%</p>";
+var HTMLprojectTitle = "<h4>Now Playing:</h4><a class='projectTitle' href='#'>%data%</a>";
+var HTMLprojectDates = "<div class='date-text'><h4>Dates Worked:</h4><p class='projectInfo'>%data%</p></div>";
+var HTMLprojectDescription = "<p class='projectInfo'>%data%</p>";
 var HTMLprojectImage = "<img id='projectScreen' class='' src='%data%'>";
+var HTMLprojectThumb = "<div class='projectThumb'><img src='%data%'></div>";
 
 var HTMLeduStart = "<h3>Education</h3><ul id='schools' class=''></ul>";
 var HTMLschoolStart = "<div class='education-entry'></div>";
@@ -57,7 +60,7 @@ var HTMLschoolName = "<p><a href='%url%'>%data%";
 var HTMLschoolDegree = " -- %data%</a></p>";
 var HTMLschoolDates = "<p class='date-text'>%data%</p>";
 var HTMLschoolLocation = "<div class='location-text'>%data%</div>";
-var HTMLschoolMajor = "<em>Major: %data%</em>";
+var HTMLschoolMajor = "<p><em>Major: %data%</em></p>";
 
 //added a wrapper div for online course entries for styling purposes
 var HTMLonlineClasses = "<h3>Online Classes</h3>";
