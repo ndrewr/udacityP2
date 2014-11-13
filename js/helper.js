@@ -15,7 +15,7 @@ replace the %data% placeholder text you see in them.
 var HTMLheaderName = "<h1 id='name'>%data%</h1>";
 var HTMLheaderRole = "<span>%data%</span>";
 
-var HTMLchartButton = "<p class='chartBtn'><span>hide</span></p>";
+var HTMLchartButton = "<p class='chartBtn'><span>-</span></p>";
 
 var HTMLcontactLink = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem'>link</a></li>";
 var HTMLcontactGeneric = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem'>%data%</span></li>";
@@ -48,11 +48,11 @@ var HTMLworkLocation = "<div class='location-text'>%data%</div>";
 var HTMLworkDescription = "<p><br>%data%</p>";
 
 var HTMLprojectStart = "<div class='project-entry'></div>";
-var HTMLprojectTitle = "<h4>Now Playing:</h4><a class='projectTitle' href='#'>%data%</a>";
+var HTMLprojectTitle = "<h4>Now Showing:</h4><a class='projectTitle' href='#'>%data%</a>";
 var HTMLprojectDates = "<div class='date-text'><h4>Dates Worked:</h4><p class='projectInfo'>%data%</p></div>";
 var HTMLprojectDescription = "<p class='projectInfo'>%data%</p>";
 var HTMLprojectImage = "<img id='projectScreen' class='' src='%data%'>";
-var HTMLprojectThumb = "<div class='projectThumb'><img src='%data%'></div>";
+var HTMLprojectThumb = "<div class='projectThumb'></div>";
 
 var HTMLeduStart = "<h3>Education</h3><ul id='schools' class=''></ul>";
 var HTMLschoolStart = "<div class='education-entry'></div>";

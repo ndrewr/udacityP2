@@ -60,7 +60,7 @@ var projects = {
 			"title":"Mock Site",
 			"datesworked":"Oct 2014",
 			"description":"Produce a sample portfolio layout with CSS effects.",
-			"images":["images/keepcalmCodeon.png"]
+			"images":["images/mockSite1.png","images/mockSite2.png","images/mockSite3.png"]
 		},
 		{
 			"title":"The Blog of Awesome",
@@ -84,19 +84,45 @@ var projects = {
 
 	// Renders html for Project section content
 	render: function() {
-		$("#projects").append("<p class='chartBtn'><span>hide</span></p>");
+		$("#projects").append(HTMLchartButton);
 		
-		//$("#projects").prepend(HTMLprojectImage.replace("%data%", ""));
 
-		
+		//initialize first project display		
 		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title));
 		$("#projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked));
 		$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
+		//$("#projects").append(HTMLprojectImage.replace("%data%", ""));
+		$("#projectScreen img").attr("src", projects.projects[0].images[0]);
+
 
 		for(var project in projects.projects) {
-			$("#projectSelector").append(HTMLprojectThumb.replace("%data%", projects.projects[project].images[0]));
+			$("#projectSelector").append(HTMLprojectThumb);//.replace("%data%", projects.projects[project].images[0]));
+			//assign ID#
+			$(".projectThumb:last").attr("id", project);
+			//setup project selector thumbs
+			$(".projectThumb:last").css("background", "url(" + projects.projects[project].images[0] + ") center/cover no-repeat");
+
+			//code to setup the image carousel
+			//each html snippet is an img that has been foramtted to display inline block
+			//the #projectScreen uses overflow:hide to conceal non-focus images
+			// var imgCarousel = projects.projects[project].images
+			/* for(var img in projects.projects[project].images) {
+				$("#projectScreen").append(HTMLcarouselPic.replace("%data%", projects.projects[project].images[img]));
+			} */
 		}
 
+		// initialize first displayed project
+		$(".projectThumb:first").addClass("pressed");
+
+
+		/* click handlers */
+		$("#projectSelector").on("click", ".projectThumb", function() {
+			console.log("Thumb clicked!");
+			var selection = $(this).attr("id");
+			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title));
+			$("#projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[selection].datesworked));
+			$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[selection].description));
+		});
 	}
 };
 
@@ -115,7 +141,7 @@ var bio = {
 			"location":"Orange County"
 		},
 	"skills": [
-			"javascript", "HTML/CSS3", "jQuery",
+			"javascript", "HTML / CSS3", "jQuery",
 			"Objective-C/iOS Dev", "Python", "Backbone.js"
 		],
 	"footerInfo":"© Andrew Roy Chen 2014 CBA, Inc. 2014",
@@ -196,7 +222,6 @@ var education = {
 	render: function() {
 		/* list out old-school...schooling */
 		$("#education").append(HTMLeduStart);
-
 		for(var school in education.schools) {
 			$("#schools").append(HTMLschoolStart);
 			$(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[school].name).replace("%url%", education.schools[school].url))
@@ -207,15 +232,12 @@ var education = {
 				$(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]));
 			}
 		}
-
 		/* list out online courses */
-		//$("#education").append(HTMLonlineClasses);
 		for(var course in education.onlineCourses) {
 			$("#schools").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school));
 			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
 									.append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].datesattended))
 									.append(HTMLonlineURL.replace("%data%", education.onlineCourses[course].url));
-
 		}
 	}
 };
@@ -230,42 +252,43 @@ $(function() {
 	// have this animation fire after user has scrolled at least 10pixels...?
 	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em"}, 600, function() {});
 
-
-
-	/* ktchen sink */
 	// control hover state for chart borders
-	$( ".chartBtn" ).hover(function() {
-		$( this ).parent().css("borderColor", "#fff");
-		}, function() {
-			$( this ).parent().css("borderColor", "#b6c4db");
-		});
+	$(".chartBtn").hover(
+		function()
+		{
+			$(this).parent().css("borderColor", "#a42117");
+		},
+		function() {
+			$(this).parent().css("borderColor", "#b6c4db");
+		}
+	);
 
-	// minimize section charts
-	var charty = $( this ).parent();
+	// minimize section charts and toggle button label
 	$( ".chartBtn" ).click(function() {
-
-		$( this ).parent().toggleClass("rolledChart");
-
-		$( this ).parent().find("ul").slideToggle(200);
-
-
-	/*
-		if( charty.hasClass("rolledChart") ) {
-			$( this ).parent().animate({
-								height: "toggle",
-							}, 400, function() {});
+		var charty = $(this).parent();
+		if ( $(this).parent().hasClass("rolledChart") ) {
+			$(this).find("span").html("-");
 		}
 		else {
-			$( this ).parent().animate({
-								height: "100px",
-							}, 400, function() {});
-		} */
+			$(this).find("span").html("+");
+		}
+
+		$(this).parent().toggleClass("rolledChart");
+
+		$(this).parent().find("ul").slideToggle(200);
 	});
+
+	//time for some overkill. Adding ARIA-pressed to thumbnails so I can style that state
+	$(".projectThumb").click(function() {
+		$(".pressed").removeClass("pressed");
+		$(this).addClass("pressed");
+
+		/*$(".projectThumb[aria-pressed]").removeAttr("aria-pressed");
+		$(this).attr("aria-pressed", "true"); */
+	});
+
+
 });
-
-
-
-
 
 
 
