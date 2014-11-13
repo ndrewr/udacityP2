@@ -93,6 +93,8 @@ var projects = {
 		$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
 		//$("#projects").append(HTMLprojectImage.replace("%data%", ""));
 		$("#projectScreen img").attr("src", projects.projects[0].images[0]);
+		$("#projectScreen img").attr("data-pic", 1);
+		$("#projectScreen img").attr("data-project", 0);
 
 
 		for(var project in projects.projects) {
@@ -116,12 +118,38 @@ var projects = {
 
 
 		/* click handlers */
+		// handler for selecting projects to view
 		$("#projectSelector").on("click", ".projectThumb", function() {
 			console.log("Thumb clicked!");
 			var selection = $(this).attr("id");
 			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title));
 			$("#projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[selection].datesworked));
 			$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[selection].description));
+			$("#projectScreen img").attr("data-project", selection);
+		});
+
+		// handler for project image buttons
+		$("#projectScreen").on("click", "a", function(event) {
+			event.preventDefault();
+			var btn = $(event.target);
+			var nextPic;
+			var currentProject = parseInt($("#projectImage").attr("data-project"), 10); //convert data to int
+			var currentPic = parseInt($("#projectImage").attr("data-pic"), 10); //convert data to int
+
+						console.log("Pic nav buttons pressed! index is: %s", currentPic);
+
+			if (btn.attr("id") === "prevBtn") {
+				nextPic = (currentPic - 1) === 0? projects.projects[currentProject].images.length : (currentPic - 1);
+				console.log("Prev pic is " + nextPic);
+			}
+			else {
+				nextPic = (currentPic + 1) > projects.projects[currentProject].images.length? 1 : (currentPic + 1);
+				console.log("Next pic is " + nextPic);
+			}
+
+			$("#projectScreen img").attr("data-pic", nextPic);
+			$("#projectScreen img").attr("src", projects.projects[currentProject].images[nextPic-1]);
+
 		});
 	}
 };

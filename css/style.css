@@ -214,6 +214,18 @@ hr {
 	transform: translate(-50%, -50%);
 }
 
+.btnLabel {
+	font-size: 2em;
+	position: absolute;
+	color: #fff;
+  	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	/* center the element */
+	top: 50%; 
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
 .rolledChart {
 	height: 100px;
 
@@ -388,7 +400,7 @@ header>span {
 
 #projectScreen {
 	float: right;
-	width: 63%;
+	width: 65%;
 	height: 60%;
 	background: #000;
 	box-sizing: border-box;
@@ -397,10 +409,93 @@ header>span {
 
 #projectScreen img {
 	height: 100%;
+	width: 70%;
 	width: auto;
 	position: absolute;
 
 }
+
+#prevBtn,
+#nextBtn {
+	position: relative;
+	width: 15%;
+	height: 100%;
+	z-index: 2;
+	text-decoration: none;
+
+}
+
+#prevBtn:hover span,
+#nextBtn:hover span{
+	color: transparent;
+	text-shadow: none;
+}
+
+#prevBtn {
+	float: left;
+}
+
+#nextBtn {
+	float: right;
+}
+
+
+
+#prevBtn:after,
+#nextBtn:after {
+	content: '';
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+
+	border-bottom: 20px solid transparent;
+
+	right: 0;
+
+	position: absolute;
+	top: 50%; 
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+
+}
+#prevBtn:after {
+	
+	border-right: 20px solid #e35b31;
+}
+
+#nextBtn:after {
+	
+	border-left: 20px solid #e35b31;
+}
+/*#prevBtn span:after,
+#nextBtn span:after {
+	content: '';
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+
+	border-bottom: 20px solid transparent;
+
+	right: 0;
+
+	position: absolute;
+	top: 50%; 
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+
+}
+
+#prevBtn span:after {
+	
+	border-right: 20px solid #e35b31;
+}
+
+#nextBtn span:after {
+	
+	border-left: 20px solid #e35b31;
+}*/
 
 #projectDetail {
 	width: 33%;
