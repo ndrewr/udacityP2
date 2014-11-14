@@ -425,12 +425,6 @@ header>span {
 
 }
 
-#prevBtn:hover span,
-#nextBtn:hover span{
-	color: transparent;
-	text-shadow: none;
-}
-
 #prevBtn {
 	float: left;
 }
@@ -454,48 +448,33 @@ header>span {
 
 	position: absolute;
 	top: 50%; 
-	left: 50%;
+	/*left: 50%;*/
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 
 }
 #prevBtn:after {
 	
-	border-right: 20px solid #e35b31;
+	border-right: 20px solid #fff;
+		left: 30%;
+
 }
 
 #nextBtn:after {
 	
-	border-left: 20px solid #e35b31;
-}
-/*#prevBtn span:after,
-#nextBtn span:after {
-	content: '';
-	width: 0;
-	height: 0;
-	border-top: 20px solid transparent;
-
-	border-bottom: 20px solid transparent;
-
-	right: 0;
-
-	position: absolute;
-	top: 50%; 
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
+	border-left: 20px solid #fff;
+		left: 70%;
 
 }
-
-#prevBtn span:after {
+#prevBtn:hover:after {
 	
 	border-right: 20px solid #e35b31;
 }
 
-#nextBtn span:after {
+#nextBtn:hover:after {
 	
 	border-left: 20px solid #e35b31;
-}*/
+}
 
 #projectDetail {
 	width: 33%;
@@ -509,7 +488,7 @@ header>span {
 }
  
 #projectSelector {
-	width: 60%;
+	width: 75%;
 	height: 25%;
 	background: #555;
 	display: inline;
@@ -526,7 +505,6 @@ header>span {
   	flex-flow: row;
 
   	cursor: pointer;
-
 }
 
 .projectTitle {
@@ -572,14 +550,6 @@ header>span {
 }
 
 /* This flexbox effect is courtesy www.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/ */
-.projectThumb[aria-pressed="true"] {
-   -prefix-box-ordinal-group: 1;
-   -ms-flex-order: -1;
-   order: -1;
-
-   -prefix-box-flex: 2;
-   flex: 2;
-}
 /* this class replaces use of aria-pressed...the pseudo element is to overwrite the z-index set above*/
 .pressed {
 	-prefix-box-ordinal-group: 1;

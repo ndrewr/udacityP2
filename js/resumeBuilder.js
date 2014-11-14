@@ -32,24 +32,16 @@ var work = {
 	// Renders html for Work section content
 	render: function() {
 		$("#workExperience").append(HTMLworkStart);
+		var _workEntries = $("#workEntries");
 		for (var job in work.jobs) {
 			if(job !== 0) {$(".work-entry:last").append("<hr>");}
-
-			$("#workEntries").append(HTMLworkEntry);
+			_workEntries.append(HTMLworkEntry);
 			$(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer))
 								.append(HTMLworkTitle.replace("%data%", work.jobs[job].title))
 								.append(HTMLworkDates.replace("%data%", work.jobs[job].dates))
 								.append(HTMLworkLocation.replace("%data%", work.jobs[job].location))
 								.append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
-/*
-			$(".contentWrapper").append(HTMLworkEntry);
-			$(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer));
-			$(".work-entry:last").append(HTMLworkTitle.replace("%data%", work.jobs[job].title));
-			$(".work-entry:last").append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
-			$(".work-entry:last").append(HTMLworkLocation.replace("%data%", work.jobs[job].location));
-			$(".work-entry:last").append(HTMLworkDescription.replace("%data%", work.jobs[job].description)); */
 		}
-		
 	}
 };
 
@@ -59,26 +51,26 @@ var projects = {
 		{
 			"title":"Mock Site",
 			"datesworked":"Oct 2014",
-			"description":"Produce a sample portfolio layout with CSS effects.",
-			"images":["images/mockSite1.png","images/mockSite2.png","images/mockSite3.png"]
+			"description":"Produce a sample portfolio layout with CSS effects. The site can adapt to different screen sizes.",
+			"images":["images/mockSite1.png","images/mockSite2.png","images/mockSite4.jpg"]
 		},
 		{
-			"title":"The Blog of Awesome",
+			"title":"Awesome Blog",
 			"datesworked":"Jan 2014 - Mar 2014",
-			"description":"Simply a blog that enables awesomeness to flow from the keyboard.",
-			"images":["images/smashbrosInset.png"]
+			"description":"Simply a blog that enables awesomeness to flow from keyboard to screen. Yes. Flow. Like water or air or something flowy. Whooosh.",
+			"images":["images/wee-ki1.png","images/wee-ki2.png","images/wee-ki3.jpg"]
 		},
 		{
 			"title":"368+ Mobile",
 			"datesworked":"Jul 2013 - Aug 2014",
-			"description":"A mobile-optimized web app for 368+",
-			"images":["images/nbacares.png"]
+			"description":"A mobile-optimized web app for 368+, the law enforcement app meant to aid investigation of elder abuse cases.",
+			"images":["images/368mobile1.png","images/368mobile2.png","images/368mobile3.png","images/368mobile4.png","images/368mobile5.jpg"]
 		},
 		{
-			"title":"Acme Digital Product Page",
+			"title":"Acme Digital",
 			"datesworked":"Jul 2012 - Sept 2012",
-			"description":"Created a product page for a new line of products.",
-			"images":["images/icancode.jpg"]
+			"description":"Created a product page for a new line of products and handled maintenance and updates.",
+			"images":["images/acmeDigital1.png","images/acmeDigital2.png","images/acmeDigital3.jpg"]
 		}
 	],
 
@@ -86,70 +78,54 @@ var projects = {
 	render: function() {
 		$("#projects").append(HTMLchartButton);
 		
-
-		//initialize first project display		
-		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title));
-		$("#projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked));
-		$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
-		//$("#projects").append(HTMLprojectImage.replace("%data%", ""));
-		$("#projectScreen img").attr("src", projects.projects[0].images[0]);
-		$("#projectScreen img").attr("data-pic", 1);
-		$("#projectScreen img").attr("data-project", 0);
-
-
+		// setup project selector
 		for(var project in projects.projects) {
-			$("#projectSelector").append(HTMLprojectThumb);//.replace("%data%", projects.projects[project].images[0]));
-			//assign ID#
-			$(".projectThumb:last").attr("id", project);
-			//setup project selector thumbs
-			$(".projectThumb:last").css("background", "url(" + projects.projects[project].images[0] + ") center/cover no-repeat");
-
-			//code to setup the image carousel
-			//each html snippet is an img that has been foramtted to display inline block
-			//the #projectScreen uses overflow:hide to conceal non-focus images
-			// var imgCarousel = projects.projects[project].images
-			/* for(var img in projects.projects[project].images) {
-				$("#projectScreen").append(HTMLcarouselPic.replace("%data%", projects.projects[project].images[img]));
-			} */
+			$("#projectSelector").append(HTMLprojectThumb);
+			//assign ID# and setup project selector thumbs
+			$(".projectThumb:last").attr("id", project)
+								.css("background", "url(" + projects.projects[project].images[0] + ") 50% 10%/cover no-repeat");
 		}
-
 		// initialize first displayed project
 		$(".projectThumb:first").addClass("pressed");
 
+		// initialize first project display		
+		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title))
+						.append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked))
+						.append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
+		$("#projectScreen img").attr("src", projects.projects[0].images[0]).attr("data-pic", 1).attr("data-project", 0);
 
 		/* click handlers */
 		// handler for selecting projects to view
 		$("#projectSelector").on("click", ".projectThumb", function() {
-			console.log("Thumb clicked!");
 			var selection = $(this).attr("id");
-			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title));
-			$("#projectDetail").append(HTMLprojectDates.replace("%data%", projects.projects[selection].datesworked));
-			$("#projectDetail").append(HTMLprojectDescription.replace("%data%", projects.projects[selection].description));
-			$("#projectScreen img").attr("data-project", selection);
+			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title))
+							.append(HTMLprojectDates.replace("%data%", projects.projects[selection].datesworked))
+							.append(HTMLprojectDescription.replace("%data%", projects.projects[selection].description));
+			$("#projectScreen img").attr("src", projects.projects[selection].images[0])
+								.attr("data-pic", 1).attr("data-project", selection);
 		});
 
 		// handler for project image buttons
 		$("#projectScreen").on("click", "a", function(event) {
-			event.preventDefault();
-			var btn = $(event.target);
+			event.preventDefault(); // prevent 'a' tag from redirecting
 			var nextPic;
 			var currentProject = parseInt($("#projectImage").attr("data-project"), 10); //convert data to int
 			var currentPic = parseInt($("#projectImage").attr("data-pic"), 10); //convert data to int
 
-						console.log("Pic nav buttons pressed! index is: %s", currentPic);
-
-			if (btn.attr("id") === "prevBtn") {
+			if ($(event.target).attr("id") === "prevBtn") {
 				nextPic = (currentPic - 1) === 0? projects.projects[currentProject].images.length : (currentPic - 1);
-				console.log("Prev pic is " + nextPic);
 			}
 			else {
 				nextPic = (currentPic + 1) > projects.projects[currentProject].images.length? 1 : (currentPic + 1);
-				console.log("Next pic is " + nextPic);
 			}
 
-			$("#projectScreen img").attr("data-pic", nextPic);
-			$("#projectScreen img").attr("src", projects.projects[currentProject].images[nextPic-1]);
+			$("#projectScreen img").attr("src", projects.projects[currentProject].images[nextPic-1]).attr("data-pic", nextPic);
+		});
 
+		// Adding 'pressed' class to thumbnails so I can style that state
+		$(".projectThumb").click(function() {
+			$(".pressed").removeClass("pressed");
+			$(this).addClass("pressed");
 		});
 	}
 };
@@ -176,37 +152,36 @@ var bio = {
 
 	// Renders html for Bio section content
 	render: function() {
-		$("#topContacts").prepend(HTMLblurbMsg.replace("%data%", bio.blurbMessage));
-		$("#sayMyName").prepend(HTMLheaderRole.replace("%data%", bio.role));
-		$("#sayMyName").prepend(HTMLheaderName.replace("%data%", bio.name));
-		$("#sayMyName").prepend(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage));
+		var _topContacts = $("#topContacts");
 
-		//$("#selfIntro").append(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage));
+		_topContacts.prepend(HTMLblurbMsg.replace("%data%", bio.blurbMessage));
+		$("#sayMyName").prepend(HTMLheaderRole.replace("%data%", bio.role))
+					.prepend(HTMLheaderName.replace("%data%", bio.name))
+					.prepend(HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage))
+					.append(HTMLteaserMsg.replace("%data%", bio.teaserMessage));
 
-
+		// Build out contact links
 		var test_title = /^(http)s?:\/\/.+(uncleoptimus|linkdinAC)$/i;	//fun with regular expressions :D
-
 		for(var contact in bio.contacts) {
-			if( test_title.test(bio.contacts[contact]) ) {
-				$("#topContacts").append(HTMLcontactLink.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+			if(test_title.test(bio.contacts[contact])) {
+				_topContacts.append(HTMLcontactLink.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 			}
-			else $("#topContacts").append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+			else {
+				_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+			}
 		}
-		$("#sayMyName").append(HTMLteaserMsg.replace("%data%", bio.teaserMessage));
 
-		// dynamically adjust height of the teaser msg element
-		var w = $(window).height();
-		var msgtop = $(".teaser-message").offset().top;
-		console.log("Coord 1 is %s and pos 2 is %s", w, msgtop);
-		var adjHeight = w - msgtop;
-		$(".teaser-message").css("height", adjHeight);
+		// dynamically adjust height of the teaser msg element to browser height
+		var _teasermsg = $(".teaser-message");
+		var adjHeight = $(window).height() - _teasermsg.offset().top;
+		_teasermsg.css("height", adjHeight);
 
-
+		// fill in skills section
 		$("#skillsChart").append(HTMLskillsStart);
+		var _skills = $("#skills");
 		for(var skill in bio.skills) {
-			$("#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));
+			_skills.append(HTMLskills.replace("%data%", bio.skills[skill]));
 		}
-
 		$("#letsConnect").append("<p class='text-center'>%data%</p>".replace("%data%", bio.footerInfo));
 	}
 };
@@ -250,19 +225,21 @@ var education = {
 	render: function() {
 		/* list out old-school...schooling */
 		$("#education").append(HTMLeduStart);
+		var _schools = $("#schools");
 		for(var school in education.schools) {
-			$("#schools").append(HTMLschoolStart);
-			$(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[school].name).replace("%url%", education.schools[school].url))
+			_schools.append(HTMLschoolStart);
+			var _newEduEntry = $(".education-entry:last");
+			_newEduEntry.append(HTMLschoolName.replace("%data%", education.schools[school].name).replace("%url%", education.schools[school].url))
 									.append(HTMLschoolDegree.replace("%data%", education.schools[school].degree))
 									.append(HTMLschoolDates.replace("%data%", education.schools[school].datesattended))
 									.append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
 			for(var major in education.schools[school].majors) {
-				$(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]));
+				_newEduEntry.append(HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]));
 			}
 		}
 		/* list out online courses */
 		for(var course in education.onlineCourses) {
-			$("#schools").append(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school));
+			_schools.append(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school));
 			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
 									.append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].datesattended))
 									.append(HTMLonlineURL.replace("%data%", education.onlineCourses[course].url));
@@ -293,27 +270,18 @@ $(function() {
 
 	// minimize section charts and toggle button label
 	$( ".chartBtn" ).click(function() {
-		var charty = $(this).parent();
-		if ( $(this).parent().hasClass("rolledChart") ) {
+		var _targetSection = $(this).parent();
+		if (_targetSection.hasClass("rolledChart")) {
 			$(this).find("span").html("-");
 		}
 		else {
 			$(this).find("span").html("+");
 		}
-
-		$(this).parent().toggleClass("rolledChart");
-
-		$(this).parent().find("ul").slideToggle(200);
+		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
+		_targetSection.find("ul").slideToggle(200);
 	});
 
-	//time for some overkill. Adding ARIA-pressed to thumbnails so I can style that state
-	$(".projectThumb").click(function() {
-		$(".pressed").removeClass("pressed");
-		$(this).addClass("pressed");
-
-		/*$(".projectThumb[aria-pressed]").removeAttr("aria-pressed");
-		$(this).attr("aria-pressed", "true"); */
-	});
+	
 
 
 });
