@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,63 +11,33 @@
       <link href="css/bootstrap.min.css" rel="stylesheet">
 	    <link href="css/style.css" rel="stylesheet">
       <!-- Fonts via Google Fonts-->
-      <!-- Ubuntu for body, Dosis for headlines, Righteous for *pop-->
+      <!-- Ubuntu ALL OVER in various weights and letter spaces-->
       <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700|Ubuntu:300,400,500,700,300italic,400italic,500italic|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 	    <title>Andrew Roy Chen | Udacity Front-End Dev Nanodegree Project 2</title>
 	</head>
 
   <body>
-    <!-- The name section will be a fixed header w/ logo and name, logo has hover effect-->
-  	<header id="sayMyName" class="resumeMaroon">
-            <ul id="topContacts" class="resumeRed"></ul>
 
+    <nav id="navbar"><span>Hello World!</span></nav>
+
+  	<header id="sayMyName" class="resumeMaroon">
+      <ul id="topContacts" class="resumeRed"></ul>
     </header>
     
     <div id="main">
-    
-      <div id="skillsChart" class="chartContainer">
-        <p class="chartBtn"><span>-</span></p>
-      </div>
-
-      <div id="projects" class="flex-box chartContainer">
-        <h3>Projects</h3>
-        <div id="projectScreen">
-          <!--<a id="prevBtn" href="#"><span class="btnLabel center-hack">prev</span></a>-->
-          <a id="prevBtn" href="#" style="text-align:center;font-size:2em;"></a>
-
-          <img id="projectImage" class='center-hack' src=''>
-          <!--<a id="nextBtn" href="#"><span class="btnLabel center-hack">next</span></a>-->
-          <a id="nextBtn" href="#" style="text-align:center;font-size:2em;"></a>
-
-        </div>
-        <div id="projectDetail"></div>
-        <div id="projectSelector" class=""></div>
-      </div>
-
-      <div id="workExperience" class="chartContainer">
-        <p class="chartBtn"><span>-</span></p>
-
-        
-      </div>
-
-      <div id="education" class="chartContainer">
-        <p class="chartBtn"><span>-</span></p>
-
-      </div>      
-      
-      <div id="mapDiv" class="">
-        <h2>Where I've Lived and Worked</h2>
-      </div>
+      <div id="skillsChart" class="chartContainer"></div>
+      <div id="projects" class="flex-box chartContainer"></div>
+      <div id="workExperience" class="chartContainer"></div>
+      <div id="education" class="chartContainer"></div>      
+      <div id="whereInTheWorld" class="chartContainer"></div>
     </div>
 
-    <footer id="letsConnect">
-    	<hr class="feature-divider">
-      <ul id="footerContacts" class="flex-box"></ul>
-    </footer>
+    <footer id="letsConnect"></footer>
 
     <!-- javascript files -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCoh9OIWE1vT85aaoVRqszGR6E3TeEut24"></script>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/helper.js"></script>

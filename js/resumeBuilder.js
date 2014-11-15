@@ -31,6 +31,7 @@ var work = {
 
 	// Renders html for Work section content
 	render: function() {
+		$("#workExperience").append(HTMLchartButton); //section close btn
 		$("#workExperience").append(HTMLworkStart);
 		var _workEntries = $("#workEntries");
 		for (var job in work.jobs) {
@@ -76,8 +77,8 @@ var projects = {
 
 	// Renders html for Project section content
 	render: function() {
-		$("#projects").append(HTMLchartButton);
-		
+		$("#projects").append(HTMLchartButton); //section close button
+		$("#projects").append(HTMLprojectStart);
 		// setup project selector
 		for(var project in projects.projects) {
 			$("#projectSelector").append(HTMLprojectThumb);
@@ -130,12 +131,12 @@ var projects = {
 	}
 };
 
-// Defines Bio section content and display method
+// Defines Bio section content and display method, including Skills Section
 var bio = {
 	"name":"Andrew Roy Chen",
 	"role":"< Front End Sherpa >",
 	"welcomeMessage":"welcome to the pimpin' site of",
-	"blurbMessage":"I delight in slick user experience<br> and aspire to craft better.<br> Let's create something awesome.",
+	"blurbMessage":"I delight in slick user experience<br> and aspire to craft better interactions.<br> Let's create something awesome.",
 	"teaserMessage":"Oh. Need to know more?",
 	"contacts": {
 			"mobile":"650-980-4424",
@@ -146,14 +147,13 @@ var bio = {
 		},
 	"skills": [
 			"javascript", "HTML / CSS3", "jQuery",
-			"Objective-C/iOS Dev", "Python", "Backbone.js"
+			"Objective-C", "iOS Dev", "Python", "Backbone.js"
 		],
 	"footerInfo":"© Andrew Roy Chen 2014 CBA, Inc. 2014",
 
 	// Renders html for Bio section content
 	render: function() {
 		var _topContacts = $("#topContacts");
-
 		_topContacts.prepend(HTMLblurbMsg.replace("%data%", bio.blurbMessage));
 		$("#sayMyName").prepend(HTMLheaderRole.replace("%data%", bio.role))
 					.prepend(HTMLheaderName.replace("%data%", bio.name))
@@ -171,18 +171,39 @@ var bio = {
 			}
 		}
 
-		// dynamically adjust height of the teaser msg element to browser height
-		var _teasermsg = $(".teaser-message");
-		var adjHeight = $(window).height() - _teasermsg.offset().top;
-		_teasermsg.css("height", adjHeight);
-
 		// fill in skills section
+		$("#skillsChart").append(HTMLchartButton); //close button for skills section
 		$("#skillsChart").append(HTMLskillsStart);
 		var _skills = $("#skills");
 		for(var skill in bio.skills) {
 			_skills.append(HTMLskills.replace("%data%", bio.skills[skill]));
 		}
-		$("#letsConnect").append("<p class='text-center'>%data%</p>".replace("%data%", bio.footerInfo));
+
+		// append the footer section content
+		$("#letsConnect").append(HTMLfooterStart.replace("%data%", bio.footerInfo));
+	
+		// dynamically adjust height of the teaser msg element to browser height
+		var _teasermsg = $(".teaser-message");
+		var adjHeight = $(window).height() - _teasermsg.offset().top;
+		_teasermsg.css("height", adjHeight);
+	
+		// drop in navbar after user has scrolled certain distance
+
+		//$("body").prepend(HTMLnavbar);
+		$(window).scroll(function() {
+			var targetDistance = $("header").offset().top + $("header").height;
+			console.log("Target distance is " + targetDistance);
+
+			if($(window).scrollTop() > targetDistance) {
+
+				console.log("time to show the header!");
+				// set navbar to display with animation
+				$("#navbar").css("display", "block");
+			}
+			if($(window).scrollTop() < targetDistance) {
+				$("#navbar").css("display", "none");
+			}
+		});
 	}
 };
 
@@ -223,6 +244,7 @@ var education = {
 
 	// Renders html for Eduction section content
 	render: function() {
+		$("#education").append(HTMLchartButton); //close button for edu section
 		/* list out old-school...schooling */
 		$("#education").append(HTMLeduStart);
 		var _schools = $("#schools");
@@ -247,12 +269,21 @@ var education = {
 	}
 };
 
+var customMap = {
+
+	render: function() {
+		$("#whereInTheWorld").append(googleMap);
+		$("#whereInTheWorld").append(HTMLchartButton);
+	}
+};
+
 $(function() {
 	/* Kickoff Party */
 	bio.render();
 	work.render();
 	education.render();
 	projects.render();
+	customMap.render();
 
 	// have this animation fire after user has scrolled at least 10pixels...?
 	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em"}, 600, function() {});
@@ -277,8 +308,14 @@ $(function() {
 		else {
 			$(this).find("span").html("+");
 		}
-		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
+		// _targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
 		_targetSection.find("ul").slideToggle(200);
+		_targetSection.find("div").slideToggle(400);
+	_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
+		if(_targetSection.attr("id") === ("projects"|"whereInTheWorld")) {
+			console.log("time to hide the projects");
+
+		}
 	});
 
 	
