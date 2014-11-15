@@ -1,0 +1,719 @@
+/* Custom style sheet for Udacity Nanodegree Project 2 Interactive Resume */
+/* Andrew R Chen, Oct 2014
+/* ------------------------------------------------------------------------
+
+/* GLOBAL STYLES */
+/* Colors */
+.resumeRed {
+	background: #a42117;
+}
+.resumeBlue {
+	background: #081a4f;
+}
+.resumeMaroon {
+	background: #3e0f11;
+}
+.resumeLiteBlue {
+	background: #887cc0;
+}
+.resumeGlass {
+	background: #b6c4db;
+}
+.resumeSteel {
+	background: #d9c9cc;
+}
+.resumeGray {
+	background: #88787b;
+}
+.resumeOrange {
+	background: #e35b31;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?cahfeu');
+	src:url('../fonts/icomoon.eot?#iefixcahfeu') format('embedded-opentype'),
+		url('../fonts/icomoon.woff?cahfeu') format('woff'),
+		url('../fonts/icomoon.ttf?cahfeu') format('truetype'),
+		url('../fonts/icomoon.svg?cahfeu#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='icon-'], [class*=' icon-'] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-handlogo:before {
+	content: '\e617';
+}
+.icon-location:before {
+	content: '\e600';
+}
+.icon-screen:before {
+	content: '\e609';
+}
+.icon-mobile:before {
+	content: '\e60a';
+}
+.icon-tablet:before {
+	content: '\e601';
+}
+.icon-mail:before {
+	content: '\e611';
+}
+.icon-googleplus:before {
+	content: '\e602';
+}
+.icon-facebook:before {
+	content: '\e613';
+}
+.icon-twitter:before {
+	content: '\e615';
+}
+.icon-github:before {
+	content: '\e603';
+}
+.icon-linkedin:before {
+	content: '\e604';
+}
+.icon-mobile2:before {
+	content: '\e605';
+}
+.icon-mail2:before {
+	content: '\e606';
+}
+.icon-location2:before {
+	content: '\e607';
+}
+.icon-github2:before {
+	content: '\e608';
+}
+.icon-github3:before {
+	content: '\e60b';
+}
+.icon-twitter2:before {
+	content: '\e60c';
+}
+.icon-twitter3:before {
+	content: '\e60d';
+}
+.icon-facebook2:before {
+	content: '\e60e';
+}
+.icon-facebook3:before {
+	content: '\e60f';
+}
+.icon-googleplus2:before {
+	content: '\e610';
+}
+.icon-googleplus3:before {
+	content: '\e612';
+}
+.icon-linkedin2:before {
+	content: '\e614';
+}
+.icon-linkedin3:before {
+	content: '\e616';
+}
+
+body {
+	background:
+	radial-gradient(black 15%, transparent 16%) 0 0,
+	radial-gradient(black 15%, transparent 16%) 8px 8px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	/*background-color:#a21b1a; */
+	background-color:#3e0f11;
+	background-size:16px 16px;
+	font: 1em 'Ubuntu', sans-serif;
+}
+
+h3 {
+	font: 4em 'Ubuntu Condensed', sans-serif;
+	color: #887cc0;
+	width: 100%;
+}
+
+hr {
+	border: 0;
+    border-bottom: 4px solid #b6c4db;
+    background: #e35b31;
+}
+
+/* center an element in div */
+.center-hack {
+	top: 50%; 
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.chartContainer {
+	box-sizing: border-box;
+	border: 1em solid #b6c4db;
+	border-radius: 2em;
+	position: relative;
+	margin: 20px 10px;
+	padding: 10px;
+	transition: height 1s ease;
+}
+
+.chartSelect {
+	border-color: #fff;
+}
+
+.chartBtn:hover {
+	background: #a42117;
+	color: #fff;
+}
+
+.chartBtn {
+	font-size: 1.5em;
+	width: 5em;
+	height: 3em;
+	background: #b6c4db;
+	border-radius: .5em;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+
+.chartBtn span  {
+	font-size: 2em;
+	position: absolute;
+	/* center the element */
+	top: 50%; 
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.btnLabel {
+	font-size: 2em;
+	position: absolute;
+	color: #fff;
+  	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+	/* center the element */
+	top: 50%; 
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.rolledChart {
+	height: 100px;
+	-webkit-transition: height 1.5s ease;
+	transition: height 1.5s ease;
+}
+
+.flex-box {
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: row wrap;
+  	-webkit-flex-flow: row wrap;
+  	flex-flow: row wrap;
+  	align-items: center;
+  	justify-content: space-around;
+}
+
+/* --------------------------------------------------------------------- */
+/* Header styles */
+header {
+	background: gray;
+	color: #887cc0;
+	font: 2em 'Ubuntu Condensed', sans-serif;
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+
+  	-ms-flex-flow: column wrap;
+  	-webkit-flex-flow: column wrap;
+  	flex-flow: column wrap;
+  	align-items: center;
+}
+
+.welcome-message {
+	font: italic 300 1em 'Ubuntu', sans-serif;
+	margin-top: 1em;
+}
+
+.blurb-message {
+	min-width: 40%;
+	font: 300 1em 'Ubuntu', sans-serif;
+	color: #fff;
+}
+
+.teaser-message span {
+	margin-bottom: 1em;
+}
+
+.teaser-message {
+	font: 300 1.5em 'Ubuntu', sans-serif;
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  	-ms-flex-flow: column wrap;
+  	-webkit-flex-flow: column wrap;
+  	flex-flow: column wrap;
+  	justify-content: flex-end;
+}
+
+.teaserLogo {
+	display: inline-block;
+	color: #a42117;
+	transform: rotate(90deg);
+}
+
+#name {
+	font: bold 4em 'Ubuntu', sans-serif;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+header>span {
+	margin-bottom: 3em;
+}
+
+/* --------------------------------------------------------------------- */
+/* Contacts styles */
+#topContacts {
+	list-style: none;
+	width: 100%;
+  	padding: 1em;
+  	justify-content: center;
+  	align-items: center;
+}
+
+#topContacts li {
+	margin: .5em;
+	padding: .5em;
+	color: #fff;
+	border-radius: 2em;
+	font: 1.3em 'Ubuntu Condensed', sans-serif;
+/*
+	-webkit-transition: all 1s ease-out;
+	transition: width .5s ease-out; */
+}
+
+#topContacts .contactBadge {
+	font-size: 1.5em;
+	margin-top: 50%;
+	margin-bottom: 50%;
+}
+
+#topContacts li:hover .contactBadge {
+	display: none;
+}
+
+#topContacts li:hover .contactItem {
+	display: inherit;
+	font-size: .7em;
+}
+
+.contactItem {
+	display: none;
+	margin-right: .5em;
+}
+
+/* --------------------------------------------------------------------- */
+/* Main Element styles */
+#main {
+  	justify-content: center;
+}
+
+/* --------------------------------------------------------------------- */
+/* Project styles */
+#projects {
+	box-sizing: border-box;
+	width: 95%;
+	background: #fff;
+	overflow: hidden; /* helps for toggle animation */
+	-webkit-transition: height 1.5s ease;
+	transition: height 1.5s ease;
+}
+
+#projectScreen {
+	float: right;
+	width: 65%;
+	height: 350px;
+	background: #000;
+	box-sizing: border-box;
+	position: relative;
+}
+
+#projectImage {
+	height: 100%;
+	width: 80%;
+	position: absolute;
+}
+
+#prevBtn,
+#nextBtn {
+	position: relative;
+	width: 15%;
+	height: 100%;
+	z-index: 2;
+	text-decoration: none;
+}
+
+#prevBtn {
+	float: left;
+}
+
+#nextBtn {
+	float: right;
+}
+
+#prevBtn:after,
+#nextBtn:after {
+	content: '';
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	right: 0;
+	position: absolute;
+	top: 50%; 
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+#prevBtn:after {
+	border-right: 20px solid #fff;
+	left: 30%;
+}
+
+#nextBtn:after {
+	border-left: 20px solid #fff;
+	left: 70%;
+}
+
+#prevBtn:hover:after {
+	border-right: 20px solid #e35b31;
+}
+
+#nextBtn:hover:after {
+	border-left: 20px solid #e35b31;
+}
+
+#projectDetail {
+	width: 33%;
+	height: auto;
+	display: inline;
+	background: #d9c9cc;
+	float: left;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 1.5em;
+}
+ 
+#projectSelector {
+	width: 75%;
+	height: 120px;
+	background: #555;
+	display: inline;
+	margin-left: auto;
+	margin-right: auto;
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  	-ms-flex-flow: row;
+  	-webkit-flex-flow: row;
+  	flex-flow: row;
+  	cursor: pointer;
+}
+
+.projectTitle {
+	font: 700 2em 'Ubuntu', sans-serif;
+	margin-left: 10px;
+}
+
+.projectInfo {
+	font: 1.5em 'Ubuntu Condensed', sans-serif;
+	margin-left: 10px;
+}
+
+.projectThumb {
+	border-size: border-box;
+	height: 100%;
+	border: 1px solid #fff;
+	-webkit-flex: 1;
+	flex: 1;
+	overflow: hidden;
+	position: relative;
+}
+
+/* blacks out the div until hover or selection */
+.projectThumb:after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.7);
+	z-index: 1;
+}
+
+.projectThumb:hover:after {
+	z-index: -1;
+}
+
+.projectThumb:active {
+	border: 5px solid red;
+}
+
+/* This flexbox effect is courtesy www.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/ */
+/* this class replaces use of aria-pressed...the pseudo element is to overwrite the z-index set above*/
+.pressed {
+	-prefix-box-ordinal-group: 1;
+   -ms-flex-order: -1;
+   order: -1;
+   -prefix-box-flex: 2;
+   flex: 2;
+   border: 4px solid #e35b31;
+}
+/* makes selected thumb show its colors */
+.pressed:after {
+	z-index: -1;
+}
+
+/* --------------------------------------------------------------------- */
+/* Education styles */
+#education {
+	width: 45%;
+	background: #fff;
+	position: relative;
+	border-radius:.5em;
+	overflow: scroll; /* would prefer to hide the damn scrollbar on scroll */
+	overflow-x: hidden; /* hides the list content and keeps stops scrolling on x-axis */ 
+}
+
+#schools {
+	overflow: auto;
+	padding-left: 0;
+}
+
+.education-entry {
+	background: #d9c9cc;
+	border-radius: 1em;
+	font-size: 2em;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+/* --------------------------------------------------------------------- */
+/* Work Experience styles */
+#workExperience {
+	width: 45%;
+	background: #fff;
+	position: relative;
+	border-radius:.5em;
+	overflow: scroll; /* would prefer to hide the damn scrollbar on scroll */
+	overflow-x: hidden;
+}
+
+#workEntries {
+	overflow: auto;
+	font-size: 2em;
+	list-style: none;
+	padding-left: 40px;
+}
+
+/* --------------------------------------------------------------------- */
+/* Skills styles */
+#skillsChart {
+	width: 80%;
+	overflow: hidden;
+}
+
+#skills li {
+	font: 3em 'Ubuntu Condensed', sans-serif;
+	margin: 1em;
+	color: #e35b31;
+}
+
+/* --------------------------------------------------------------------- */
+/* Map styles */
+#whereInTheWorld {
+	width: 75%;
+}
+
+#map {
+	width: 100%;
+	height: 400px;
+}
+
+/* --------------------------------------------------------------------- */
+/* Footer styles */
+#letsConnect {
+	font: 2em 'Ubuntu Mono', sans-serif; 
+	text-align: center;
+	background: #081A4F;
+	color: #d9c9cc;
+}
+
+/* RESPONSIVE CSS media queries
+--------------------------------------------------
+/* For small screens, shrink the name header font and adjust spacing */
+/*for iphone 4 screen size*/
+@media (max-width: 320px) {
+	h3 {
+		font-size: 3.3em;
+	}
+
+	.welcome-message {
+		display: none;
+	}
+
+	#projectScreen {
+		height: 220px;
+	}
+
+	#projectSelector {
+		height: 80px;
+	}
+
+	#map {
+		height: 15em;
+	}
+}
+/* for larger modern mobile screens */
+@media (max-width: 400px) {
+
+	#sayMyName {
+		font-size: 1.5em;
+	}
+	
+	#topContacts {
+		padding: 12px;
+	}
+
+	#topContacts li {
+		margin-left: .25em;
+		margin-right: .25em;
+	}
+
+	#skills li {
+		margin: .5em;
+	}
+
+	#projects {
+		width: 95%;
+		padding-left: 0;
+		padding-right: 0;
+
+	  	-ms-flex-flow: column wrap;
+	  	-webkit-flex-flow: column wrap;
+	  	flex-flow: column wrap;
+	}
+
+	#projects h3 {
+		margin-left: 10px;
+	}
+
+	#projectScreen {
+		width: 100%;
+		height: 240px;
+	}
+
+	#projectImage {
+		width: 100%;
+	}
+
+	#projectDetail {
+		width: 90%;
+	}
+
+	#projectSelector {
+		width: 100%;
+		height: 90px;
+	}
+
+	#prevBtn:after {
+		border-right: 20px solid #e35b31;
+	}
+
+	#nextBtn:after {
+		border-left: 20px solid #e35b31;
+	}
+
+	#workExperience {
+		width: 80%;
+	}
+
+	#education {
+		width: 85%;
+	}
+	
+	#whereInTheWorld {
+		width: 85%;
+	}
+
+	#map {
+		height: 20em;
+	}
+}
+
+/* for tablets in portrait mode*/
+@media (max-width: 900px) {
+	.blurb-message {
+		width: 100%;
+		text-align: center;
+	}
+
+	#projectScreen {
+		height: 260px;
+	}
+
+	#projectSelector {
+		width: 70%;
+		height: 100px;
+	}
+}
+
+/* for larger device screens, increase name font and adjust spacing */
+@media (min-width: 768px) {
+	#sayMyName {
+		font-size: 2em;
+	}
+
+	#topContacts {
+		padding: 2em;
+	}
+}
+
+/* Enbiggen some stuff. */
+@media (min-width: 992px) {
+	#sayMyName {
+		font-size: 2.2em;
+	}
+
+	.bottom-logo {
+		display: block;
+		font-size: 8em;
+	}
+
+	#projectScreen {
+		height: 400px;
+	}
+
+	#projectSelector {
+		width: 65%;
+		height: 130px;
+	}
+}
+

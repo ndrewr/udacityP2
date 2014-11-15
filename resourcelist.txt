@@ -1,0 +1,19 @@
+Udacity Project 2 Ver. 1 Interactive Resume
+
+-Resources List (I would like to thank...):
+
+Smashing Magazine - flexbox and design tips
+
+CSS-Tricks.com - css tricks
+
+Lea Verou's blog - for the background css pattern
+
+Stackoverflow - Glue.
+
+Google APIs - To figure out the map stuff and to d/l their apis in index.html
+
+Google Fonts - for Ubuntu fonts
+
+icomoon - for the icon fonts
+
+Adobe Kuler - for the color scheme based off a picture of optimus prime
