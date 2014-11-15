@@ -292,7 +292,6 @@ $(function() {
 		_targetSection.find("ul").slideToggle(200);
 		_targetSection.find("div").slideToggle(400);
 		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
-		
 	});
 
 	

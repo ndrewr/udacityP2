@@ -17,3 +17,5 @@ Google Fonts - for Ubuntu fonts
 icomoon - for the icon fonts
 
 Adobe Kuler - for the color scheme based off a picture of optimus prime
+
+Bootstrap - I used bootstrap's css styles sheet as a template
