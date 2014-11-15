@@ -186,24 +186,6 @@ var bio = {
 		var _teasermsg = $(".teaser-message");
 		var adjHeight = $(window).height() - _teasermsg.offset().top;
 		_teasermsg.css("height", adjHeight);
-	
-		// drop in navbar after user has scrolled certain distance
-
-		//$("body").prepend(HTMLnavbar);
-		$(window).scroll(function() {
-			var targetDistance = $("header").offset().top + $("header").height;
-			console.log("Target distance is " + targetDistance);
-
-			if($(window).scrollTop() > targetDistance) {
-
-				console.log("time to show the header!");
-				// set navbar to display with animation
-				$("#navbar").css("display", "block");
-			}
-			if($(window).scrollTop() < targetDistance) {
-				$("#navbar").css("display", "none");
-			}
-		});
 	}
 };
 
@@ -270,7 +252,6 @@ var education = {
 };
 
 var customMap = {
-
 	render: function() {
 		$("#whereInTheWorld").append(googleMap);
 		$("#whereInTheWorld").append(HTMLchartButton);
@@ -308,14 +289,10 @@ $(function() {
 		else {
 			$(this).find("span").html("+");
 		}
-		// _targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
 		_targetSection.find("ul").slideToggle(200);
 		_targetSection.find("div").slideToggle(400);
-	_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
-		if(_targetSection.attr("id") === ("projects"|"whereInTheWorld")) {
-			console.log("time to hide the projects");
-
-		}
+		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
+		
 	});
 
 	

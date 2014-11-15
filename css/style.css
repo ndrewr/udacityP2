@@ -5,12 +5,6 @@
 /* GLOBAL STYLES */
 /* Colors */
 .resumeRed {
-	background: linear-gradient( 
-					45deg,
-					#a21b1a,
-					#a42117);
-}
-.resumeRed2 {
 	background: #a42117;
 }
 .resumeBlue {
@@ -219,10 +213,8 @@ hr {
 
 .rolledChart {
 	height: 100px;
-
 	-webkit-transition: height 1.5s ease;
 	transition: height 1.5s ease;
-
 }
 
 .flex-box {
@@ -241,7 +233,6 @@ hr {
 /* Header styles */
 header {
 	background: gray;
-	/*color: #B6C4DB;*/
 	color: #887cc0;
 	font: 2em 'Ubuntu Condensed', sans-serif;
 	display: -ms-flexbox;
@@ -252,16 +243,6 @@ header {
   	-webkit-flex-flow: column wrap;
   	flex-flow: column wrap;
   	align-items: center;
-}
-
-#navbar {
-	display: none;
-	position: fixed;
-	height: 4em;
-	font-size: 2em;
-	background: #fff;
-	color: red;
-
 }
 
 .welcome-message {
@@ -293,7 +274,6 @@ header {
 .teaserLogo {
 	display: inline-block;
 	color: #a42117;
-
 	transform: rotate(90deg);
 }
 
@@ -313,18 +293,9 @@ header>span {
 #topContacts {
 	list-style: none;
 	width: 100%;
-	/*height: 5em;*/
-	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
-  	-ms-flex-flow: row wrap;
-  	-webkit-flex-flow: row wrap;
-  	flex-flow: row wrap;
-
   	padding: 1em;
   	justify-content: center;
   	align-items: center;
-
 }
 
 #topContacts li {
@@ -347,6 +318,7 @@ header>span {
 #topContacts li:hover .contactBadge {
 	display: none;
 }
+
 #topContacts li:hover .contactItem {
 	display: inherit;
 	font-size: .7em;
@@ -357,24 +329,10 @@ header>span {
 	margin-right: .5em;
 }
 
-#topContacts li span {
-
-}
-
-
 /* --------------------------------------------------------------------- */
 /* Main Element styles */
 #main {
-	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
-
-  	-ms-flex-flow: row wrap;
-  	-webkit-flex-flow: row wrap;
-  	flex-flow: row wrap;
-
   	justify-content: center;
-
 }
 
 /* --------------------------------------------------------------------- */
@@ -430,7 +388,6 @@ header>span {
 	right: 0;
 	position: absolute;
 	top: 50%; 
-	/*left: 50%;*/
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
@@ -465,22 +422,17 @@ header>span {
  
 #projectSelector {
 	width: 75%;
-	/*height: 25%;*/
 	height: 120px;
 	background: #555;
 	display: inline;
-
 	margin-left: auto;
 	margin-right: auto;
-
 	display: -ms-flexbox;
   	display: -webkit-flex;
   	display: flex;
-
   	-ms-flex-flow: row;
   	-webkit-flex-flow: row;
   	flex-flow: row;
-
   	cursor: pointer;
 }
 
@@ -500,11 +452,11 @@ header>span {
 	border: 1px solid #fff;
 	-webkit-flex: 1;
 	flex: 1;
-	
 	overflow: hidden;
 	position: relative;
 }
 
+/* blacks out the div until hover or selection */
 .projectThumb:after {
 	position: absolute;
 	content: '';
@@ -518,12 +470,10 @@ header>span {
 
 .projectThumb:hover:after {
 	z-index: -1;
-
 }
 
 .projectThumb:active {
 	border: 5px solid red;
-
 }
 
 /* This flexbox effect is courtesy www.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/ */
@@ -532,17 +482,13 @@ header>span {
 	-prefix-box-ordinal-group: 1;
    -ms-flex-order: -1;
    order: -1;
-
    -prefix-box-flex: 2;
    flex: 2;
-
    border: 4px solid #e35b31;
 }
-
+/* makes selected thumb show its colors */
 .pressed:after {
-
 	z-index: -1;
-
 }
 
 /* --------------------------------------------------------------------- */
@@ -552,18 +498,8 @@ header>span {
 	background: #fff;
 	position: relative;
 	border-radius:.5em;
-
 	overflow: scroll; /* would prefer to hide the damn scrollbar on scroll */
 	overflow-x: hidden; /* hides the list content and keeps stops scrolling on x-axis */ 
-
-	/*
-	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
-
-  	-ms-flex-flow: row wrap;
-  	-webkit-flex-flow: row wrap;
-  	flex-flow: row wrap; */
 }
 
 #schools {
@@ -572,16 +508,11 @@ header>span {
 }
 
 .education-entry {
-	/*background: linear-gradient(
-							to top right,
-							#88787b,
-							#d9c9cc);*/
 	background: #d9c9cc;
 	border-radius: 1em;
 	font-size: 2em;
 	padding: 10px;
 	margin-bottom: 10px;
-
 }
 
 /* --------------------------------------------------------------------- */
@@ -606,7 +537,7 @@ header>span {
 /* Skills styles */
 #skillsChart {
 	width: 80%;
-	
+	overflow: hidden;
 }
 
 #skills li {
@@ -619,7 +550,6 @@ header>span {
 /* Map styles */
 #whereInTheWorld {
 	width: 75%;
-	/*height: 500px;*/
 }
 
 #map {
@@ -634,16 +564,6 @@ header>span {
 	text-align: center;
 	background: #081A4F;
 	color: #d9c9cc;
-}
-
-#letsConnect div {
-	font-size: 3em;
-	width: 10em;
-	background: #fff;
-	margin-left: auto;
-	margin-right: auto;
-	border: 3px solid orange;
-	border-radius: 5px;
 }
 
 /* RESPONSIVE CSS media queries
@@ -677,7 +597,6 @@ header>span {
 	#sayMyName {
 		font-size: 1.5em;
 	}
-
 	
 	#topContacts {
 		padding: 12px;
