@@ -171,6 +171,8 @@ var bio = {
 			}
 		}
 
+
+
 		// fill in skills section
 		$("#skillsChart").append(HTMLchartButton); //close button for skills section
 		$("#skillsChart").append(HTMLskillsStart);
@@ -186,6 +188,51 @@ var bio = {
 		var _teasermsg = $(".teaser-message");
 		var adjHeight = $(window).height() - _teasermsg.offset().top;
 		_teasermsg.css("height", adjHeight);
+
+
+
+		// lets make a cool scroll distance detector
+		// get sceeen height and header section height
+			var screenheight = $(document).height;
+			var headerheight = $("header").height();
+			var fixed = false;
+			console.log("Height numbers are Header height: %s", headerheight);
+
+		// apppend the signature elements in nav (initial state hidden)
+		_topContacts.prepend("<a id='nav-signature' href='#' style='letter-spacing:5px; font-size:2em;'><span class='icon-handlogo'></span><span>ARC</span></a>");
+		$("#nav-signature").hide();
+
+		// set the event handler on header element so that it stops firing when fixed nav pops in
+		$(window).scroll(function() {
+			if(!fixed) {
+				// check for distance scrolled in header section
+				if($(document).scrollTop() > headerheight) {
+					console.log("here comes nav!!!");
+					$(".blurb-message").slideToggle(600);
+					$("#nav-signature").slideToggle(800);
+
+					$("#topContacts li").css({fontSize:"1em"});
+					// _topContacts.css({position:'fixed', top:0, "z-index":4, padding:"1px"});
+
+					_topContacts.toggleClass("extra-padding nav-mode");
+
+					fixed = true;
+				}
+			}
+			else {
+				if($(document).scrollTop() < headerheight) {
+					console.log("there goes nav!!!");
+					$(".blurb-message").slideToggle(200);
+					$("#nav-signature").slideToggle(200);
+
+					$("#topContacts li").css({fontSize:"1em"}); //problem: size is dependent on screen size...maybe use a toggle class to save state?
+					// _topContacts.css({position:'static', "z-index":1, padding:"1em"});
+					_topContacts.toggleClass("extra-padding nav-mode");
+
+					fixed = false;
+				}
+			}
+		});
 	}
 };
 
@@ -293,8 +340,6 @@ $(function() {
 		_targetSection.find("div").slideToggle(400);
 		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
 	});
-
-	
 
 
 });

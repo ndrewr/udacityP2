@@ -293,7 +293,7 @@ header>span {
 #topContacts {
 	list-style: none;
 	width: 100%;
-  	padding: 1em;
+  	/*padding: 1em;*/
   	justify-content: center;
   	align-items: center;
 }
@@ -327,6 +327,18 @@ header>span {
 .contactItem {
 	display: none;
 	margin-right: .5em;
+}
+
+.extra-padding {
+	padding: 1em;
+}
+
+.nav-mode {
+	position: fixed; 
+	top: 0; 
+	z-index: 4;
+	padding: 0;
+	background: 
 }
 
 /* --------------------------------------------------------------------- */
@@ -691,7 +703,7 @@ header>span {
 		font-size: 2em;
 	}
 
-	#topContacts {
+	.extra-padding {
 		padding: 2em;
 	}
 }
