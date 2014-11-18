@@ -189,47 +189,64 @@ var bio = {
 		var adjHeight = $(window).height() - _teasermsg.offset().top;
 		_teasermsg.css("height", adjHeight);
 
-
-
 		// lets make a cool scroll distance detector
-		// get sceeen height and header section height
-			var screenheight = $(document).height;
-			var headerheight = $("header").height();
-			var fixed = false;
-			console.log("Height numbers are Header height: %s", headerheight);
-
 		// apppend the signature elements in nav (initial state hidden)
-		_topContacts.prepend("<a id='nav-signature' href='#' style='letter-spacing:5px; font-size:2em;'><span class='icon-handlogo'></span><span>ARC</span></a>");
-		$("#nav-signature").hide();
+		_topContacts.prepend("<div id='contactbtn' class=''><span class='icon-handlogo'></span></div>");
 
+		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
+
+		// define a helper function to handle nav mode switch
+		function navTransform() {
+			_blurbmsg.slideToggle(600);
+			_navsig.slideToggle(800);
+			_topContacts.toggleClass("extra-padding nav-mode");
+
+			// add the contact button shortcut
+			_contactitems.fadeToggle(200);
+			$("#contactbtn").fadeToggle(800);
+
+			if(!navmode) {
+				_contactitems.css({fontSize:"1em"});
+			}
+			else {
+				_contactitems.css({fontSize:"1.3em"});
+			}
+			navmode = !navmode;
+		}
+
+		var screenheight = $(document).height,
+			_header = $("header"),
+			_blurbmsg= $(".blurb-message"),
+			_navsig = $("#nav-signature"),
+			_contactitems = $("#topContacts li"),
+			navmode = false; // checks state of whether in nav mode
+
+		_navsig.hide(); // not visible in default page load
+
+		// get sceeen height and header section height
 		// set the event handler on header element so that it stops firing when fixed nav pops in
-		$(window).scroll(function() {
-			if(!fixed) {
+		$(document).scroll(function() {
+			if(!navmode) {
 				// check for distance scrolled in header section
-				if($(document).scrollTop() > headerheight) {
-					console.log("here comes nav!!!");
-					$(".blurb-message").slideToggle(600);
-					$("#nav-signature").slideToggle(800);
-
-					$("#topContacts li").css({fontSize:"1em"});
+				if($(this).scrollTop() > _header.height()) {
+					// _blurbmsg.slideToggle(600);
+					// _navsig.slideToggle(800);
+					// _contactitem.css({fontSize:"1em"});
 					// _topContacts.css({position:'fixed', top:0, "z-index":4, padding:"1px"});
-
-					_topContacts.toggleClass("extra-padding nav-mode");
-
-					fixed = true;
+					// _topContacts.toggleClass("extra-padding nav-mode");
+					// fixed = true;
+					navTransform();
 				}
 			}
 			else {
-				if($(document).scrollTop() < headerheight) {
-					console.log("there goes nav!!!");
-					$(".blurb-message").slideToggle(200);
-					$("#nav-signature").slideToggle(200);
-
-					$("#topContacts li").css({fontSize:"1em"}); //problem: size is dependent on screen size...maybe use a toggle class to save state?
+				if($(this).scrollTop() < _header.height()) {
+					// _blurbmsg.slideToggle(200);
+					// _navsig.slideToggle(200);
+					// _contactitem.css({fontSize:"1.3em"}); //problem: size is dependent on screen size...maybe use a toggle class to save state?
 					// _topContacts.css({position:'static', "z-index":1, padding:"1em"});
-					_topContacts.toggleClass("extra-padding nav-mode");
-
-					fixed = false;
+					// _topContacts.toggleClass("extra-padding nav-mode");
+					// fixed = false;
+					navTransform();
 				}
 			}
 		});

@@ -293,7 +293,6 @@ header>span {
 #topContacts {
 	list-style: none;
 	width: 100%;
-  	/*padding: 1em;*/
   	justify-content: center;
   	align-items: center;
 }
@@ -338,7 +337,49 @@ header>span {
 	top: 0; 
 	z-index: 4;
 	padding: 0;
-	background: 
+	min-height: 85px;
+}
+
+#nav-signature {
+	letter-spacing: 3px;
+	font-size: 3em;
+	color: #fff;
+}
+
+#contactbtn {
+	display: none;
+	height: 65px;
+	width: 65px;
+	margin: .5em;
+	margin-top: .1em;
+	margin-bottom: .1em;
+	padding: .1em;
+	color: #fff;
+	border-radius: 2em;
+	/*-webkit-box-shadow: 0 8px 0px -6px #b35b31;
+	-moz-box-shadow: 0 8px 0px -6px #b35b31;
+	box-shadow: 0 8px 0px -6px #b35b31;*/
+	box-shadow: 0 10px 0px -6px #6c240f;
+	background: #e35b31;
+	font: 2.5em 'Ubuntu Condensed', sans-serif;
+	/*top: 50%;*/
+	/*-webkit-transform: translate(0, -55%);
+	transform: translate(0, -55%);*/
+}
+
+/*#contactbtn span {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(50%, -50%);
+	transform: translate(50%, -50%);
+}*/
+
+.btn-rightpos {
+	float: right;
+}
+.btn-leftpos {
+	left: 1em;
 }
 
 /* --------------------------------------------------------------------- */
@@ -610,13 +651,27 @@ header>span {
 		font-size: 1.5em;
 	}
 	
-	#topContacts {
-		padding: 12px;
+	.extra-padding {
+		padding: 1.1em;
 	}
+	/*#topContacts {
+		padding: 12px;
+	}*/
 
 	#topContacts li {
-		margin-left: .25em;
-		margin-right: .25em;
+		margin-left: .2em;
+		margin-right: .2em;
+	}
+
+	.nav-mode {
+		font-size: 1.4em;
+	}
+
+	#contactbtn {
+		position: absolute;
+		margin: 0;
+		right: 15px;
+		top: 10px;
 	}
 
 	#skills li {
