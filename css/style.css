@@ -344,6 +344,7 @@ header>span {
 	letter-spacing: 3px;
 	font-size: 3em;
 	color: #fff;
+	margin-right: 1em;
 }
 
 #contactbtn {
@@ -356,30 +357,22 @@ header>span {
 	padding: .1em;
 	color: #fff;
 	border-radius: 2em;
-	/*-webkit-box-shadow: 0 8px 0px -6px #b35b31;
-	-moz-box-shadow: 0 8px 0px -6px #b35b31;
-	box-shadow: 0 8px 0px -6px #b35b31;*/
-	box-shadow: 0 10px 0px -6px #6c240f;
+	/* create impression of 3d button */
+	box-shadow: 0 10px 0px -6px #6c240f; 
 	background: #e35b31;
 	font: 2.5em 'Ubuntu Condensed', sans-serif;
-	/*top: 50%;*/
-	/*-webkit-transform: translate(0, -55%);
-	transform: translate(0, -55%);*/
 }
-
-/*#contactbtn span {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	-webkit-transform: translate(50%, -50%);
-	transform: translate(50%, -50%);
-}*/
 
 .btn-rightpos {
 	float: right;
 }
+
 .btn-leftpos {
 	left: 1em;
+}
+
+.expand-page {
+	margin-top: 200px;
 }
 
 /* --------------------------------------------------------------------- */
@@ -545,14 +538,15 @@ header>span {
 }
 
 /* --------------------------------------------------------------------- */
-/* Education styles */
-#education {
+/* Work Experince and Education styles largely shared*/
+#education,
+#workExperience {
 	width: 45%;
 	background: #fff;
 	position: relative;
 	border-radius:.5em;
-	overflow: scroll; /* would prefer to hide the damn scrollbar on scroll */
-	overflow-x: hidden; /* hides the list content and keeps stops scrolling on x-axis */ 
+	/* hides the list content and stops scrolling on y, x-axis */
+	overflow: hidden;
 }
 
 #schools {
@@ -566,17 +560,6 @@ header>span {
 	font-size: 2em;
 	padding: 10px;
 	margin-bottom: 10px;
-}
-
-/* --------------------------------------------------------------------- */
-/* Work Experience styles */
-#workExperience {
-	width: 45%;
-	background: #fff;
-	position: relative;
-	border-radius:.5em;
-	overflow: scroll; /* would prefer to hide the damn scrollbar on scroll */
-	overflow-x: hidden;
 }
 
 #workEntries {
@@ -603,6 +586,7 @@ header>span {
 /* Map styles */
 #whereInTheWorld {
 	width: 75%;
+	overflow: hidden;
 }
 
 #map {
@@ -654,9 +638,6 @@ header>span {
 	.extra-padding {
 		padding: 1.1em;
 	}
-	/*#topContacts {
-		padding: 12px;
-	}*/
 
 	#topContacts li {
 		margin-left: .2em;
@@ -665,6 +646,11 @@ header>span {
 
 	.nav-mode {
 		font-size: 1.4em;
+	}
+
+	/* adjust spacing for name span and contact button on small screens */
+	#nav-signature {
+		margin-right: 0;
 	}
 
 	#contactbtn {

@@ -192,18 +192,37 @@ var bio = {
 		// lets make a cool scroll distance detector
 		// apppend the signature elements in nav (initial state hidden)
 		_topContacts.prepend("<div id='contactbtn' class=''><span class='icon-handlogo'></span></div>");
-
 		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
+
+
+		// Borrowing underscore's debounce function to limit navmode calls
+		function debounce(func, wait, immediate) {
+			var timeout;
+			return function() {
+				var context = this, args = arguments;
+				var later = function() {
+					timeout = null;
+					if (!immediate) func.apply(context, args);
+				};
+				var callNow = immediate && !timeout;
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+				if (callNow) func.apply(context, args);
+			};
+		}
 
 		// define a helper function to handle nav mode switch
 		function navTransform() {
-			_blurbmsg.slideToggle(600);
+			_blurbmsg.fadeToggle(600);
 			_navsig.slideToggle(800);
 			_topContacts.toggleClass("extra-padding nav-mode");
+			$(_teasermsg).toggleClass("expand-page");
 
-			// add the contact button shortcut
-			_contactitems.fadeToggle(200);
-			$("#contactbtn").fadeToggle(800);
+			// add the contact button shortcut for small screen sizes
+			if ($(window).width() < 768) {
+				_contactitems.fadeToggle(200);
+				$("#contactbtn").fadeToggle(800);
+			}
 
 			if(!navmode) {
 				_contactitems.css({fontSize:"1em"});
@@ -212,6 +231,8 @@ var bio = {
 				_contactitems.css({fontSize:"1.3em"});
 			}
 			navmode = !navmode;
+
+			$("#main .chartContainer").toggleClass("rolledChart");
 		}
 
 		var screenheight = $(document).height,
@@ -223,33 +244,26 @@ var bio = {
 
 		_navsig.hide(); // not visible in default page load
 
-		// get sceeen height and header section height
-		// set the event handler on header element so that it stops firing when fixed nav pops in
-		$(document).scroll(function() {
+		// get sceeen height and last header section element height
+		// set the event handler with a debounce so that extra scrolls don't wonk things up
+		// Note: 50ms chosen as an interval limit because higher values may lag transform pt
+		$(document).scroll(debounce(function() {
 			if(!navmode) {
 				// check for distance scrolled in header section
-				if($(this).scrollTop() > _header.height()) {
-					// _blurbmsg.slideToggle(600);
-					// _navsig.slideToggle(800);
+				if($(this).scrollTop() > _teasermsg.offset().top) {
 					// _contactitem.css({fontSize:"1em"});
 					// _topContacts.css({position:'fixed', top:0, "z-index":4, padding:"1px"});
-					// _topContacts.toggleClass("extra-padding nav-mode");
-					// fixed = true;
 					navTransform();
 				}
 			}
 			else {
-				if($(this).scrollTop() < _header.height()) {
-					// _blurbmsg.slideToggle(200);
-					// _navsig.slideToggle(200);
+				if($(this).scrollTop() < _teasermsg.offset().top) {
 					// _contactitem.css({fontSize:"1.3em"}); //problem: size is dependent on screen size...maybe use a toggle class to save state?
 					// _topContacts.css({position:'static', "z-index":1, padding:"1em"});
-					// _topContacts.toggleClass("extra-padding nav-mode");
-					// fixed = false;
 					navTransform();
 				}
 			}
-		});
+		}, 50));
 	}
 };
 
@@ -330,11 +344,14 @@ $(function() {
 	projects.render();
 	customMap.render();
 
+	$("#main .chartContainer").toggleClass("rolledChart"); //initiate all sections as closed
+
 	// have this animation fire after user has scrolled at least 10pixels...?
 	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em"}, 600, function() {});
 
+	var _chartbtn = $(".chartBtn");
 	// control hover state for chart borders
-	$(".chartBtn").hover(
+	_chartbtn.hover(
 		function()
 		{
 			$(this).parent().css("borderColor", "#a42117");
@@ -345,7 +362,7 @@ $(function() {
 	);
 
 	// minimize section charts and toggle button label
-	$( ".chartBtn" ).click(function() {
+	_chartbtn.click(function() {
 		var _targetSection = $(this).parent();
 		if (_targetSection.hasClass("rolledChart")) {
 			$(this).find("span").html("-");
@@ -353,8 +370,8 @@ $(function() {
 		else {
 			$(this).find("span").html("+");
 		}
-		_targetSection.find("ul").slideToggle(200);
-		_targetSection.find("div").slideToggle(400);
+		// _targetSection.find("ul").slideToggle(200);
+		// _targetSection.find("div").slideToggle(400);
 		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
 	});
 
