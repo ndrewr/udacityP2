@@ -297,7 +297,7 @@ header>span {
   	align-items: center;
 }
 
-#topContacts li {
+#topContacts > li {
 	margin: .5em;
 	padding: .5em;
 	color: #fff;
@@ -314,11 +314,11 @@ header>span {
 	margin-bottom: 50%;
 }
 
-#topContacts li:hover .contactBadge {
+#topContacts > li:hover .contactBadge {
 	display: none;
 }
 
-#topContacts li:hover .contactItem {
+#topContacts > li:hover .contactItem {
 	display: inherit;
 	font-size: .7em;
 }
@@ -338,6 +338,7 @@ header>span {
 	z-index: 4;
 	padding: 0;
 	min-height: 85px;
+	background: rgba(164,33,23,.95);
 }
 
 #nav-signature {
@@ -358,13 +359,18 @@ header>span {
 	color: #fff;
 	border-radius: 2em;
 	/* create impression of 3d button */
-	box-shadow: 0 10px 0px -6px #6c240f; 
+	box-shadow: 0 10px 0 -6px #6c240f; 
 	background: #e35b31;
 	font: 2.5em 'Ubuntu Condensed', sans-serif;
 }
 
+#contactbtn:active {
+	top: 16px;
+	box-shadow: inset 0 -5px 0 -6px #6c240f; 
+}
+
 .btn-rightpos {
-	float: right;
+	right: 15px;
 }
 
 .btn-leftpos {
@@ -373,6 +379,44 @@ header>span {
 
 .expand-page {
 	margin-top: 200px;
+}
+
+.conbtn {
+	margin: .25em;
+	padding: .2em;
+	color: #fff;
+	border-radius: 2em;
+	font: 1em 'Ubuntu Condensed', sans-serif;
+	background: #e35b31;
+	width: 1em;
+	height: 1em;
+	margin-left: 0;
+}
+.btn-active {
+	background: #fff;
+	color: #e35b31;
+}
+
+#contactsdrawer {
+	list-style: none;
+	background: #081a4f;
+	border-radius: 2em;
+	left: 0;
+	right: 0;
+	top: 0;
+	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  	-ms-flex-flow: column;
+  	-webkit-flex-flow: column;
+  	flex-flow: column;
+  	justify-content: space-around;
+  	/* defaults hidden until contact btn press. padding top prevents overlap, z-index layers just below btn */
+  	position: absolute;
+  	display: none;
+  	z-index: -1;
+  	padding: 5px;
+  	padding-top: 1.5em;
 }
 
 /* --------------------------------------------------------------------- */
@@ -607,7 +651,7 @@ header>span {
 --------------------------------------------------
 /* For small screens, shrink the name header font and adjust spacing */
 /*for iphone 4 screen size*/
-@media (max-width: 320px) {
+@media only screen and (max-width: 320px) {
 	h3 {
 		font-size: 3.3em;
 	}
@@ -629,7 +673,7 @@ header>span {
 	}
 }
 /* for larger modern mobile screens */
-@media (max-width: 400px) {
+@media only screen and (max-width: 400px) {
 
 	#sayMyName {
 		font-size: 1.5em;
@@ -639,7 +683,7 @@ header>span {
 		padding: 1.1em;
 	}
 
-	#topContacts li {
+	#topContacts > li {
 		margin-left: .2em;
 		margin-right: .2em;
 	}
@@ -693,7 +737,7 @@ header>span {
 
 	#projectSelector {
 		width: 100%;
-		height: 90px;
+		height: 80px;
 	}
 
 	#prevBtn:after {
@@ -721,13 +765,15 @@ header>span {
 	}
 }
 
-/* for tablets in portrait mode*/
-@media (max-width: 900px) {
+@media only screen and (max-width: 900px) {
 	.blurb-message {
 		width: 100%;
 		text-align: center;
 	}
+}
 
+/* for tablets in portrait mode*/
+@media only screen and (min-width: 768px) and (max-width: 900px) {
 	#projectScreen {
 		height: 260px;
 	}
@@ -739,7 +785,7 @@ header>span {
 }
 
 /* for larger device screens, increase name font and adjust spacing */
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
 	#sayMyName {
 		font-size: 2em;
 	}
@@ -750,7 +796,7 @@ header>span {
 }
 
 /* Enbiggen some stuff. */
-@media (min-width: 992px) {
+@media only screen and (min-width: 992px) {
 	#sayMyName {
 		font-size: 2.2em;
 	}

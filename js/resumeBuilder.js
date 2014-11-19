@@ -184,18 +184,19 @@ var bio = {
 		// append the footer section content
 		$("#letsConnect").append(HTMLfooterStart.replace("%data%", bio.footerInfo));
 	
+		// apppend the signature elements in nav (initial state hidden)
+		_topContacts.prepend("<div id='contactbtn'><span class='icon-handlogo'></span></div>");
+		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
+		var _contactbtn = $("#contactbtn");
+		_contactbtn.append("<ul id='contactsdrawer'><li class='conbtn'>A</li><li class='conbtn'>B</li><li class='conbtn'>C</li></ul>");
+
 		// dynamically adjust height of the teaser msg element to browser height
 		var _teasermsg = $(".teaser-message");
 		var adjHeight = $(window).height() - _teasermsg.offset().top;
 		_teasermsg.css("height", adjHeight);
 
-		// lets make a cool scroll distance detector
-		// apppend the signature elements in nav (initial state hidden)
-		_topContacts.prepend("<div id='contactbtn' class=''><span class='icon-handlogo'></span></div>");
-		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
-
-
-		// Borrowing underscore's debounce function to limit navmode calls
+		// lets make a cool scroll distance detector!
+		// First, borrowing underscore's debounce function to limit navmode calls...
 		function debounce(func, wait, immediate) {
 			var timeout;
 			return function() {
@@ -211,19 +212,18 @@ var bio = {
 			};
 		}
 
-		// define a helper function to handle nav mode switch
+		// Then, define a helper function to handle nav mode switch...
 		function navTransform() {
 			_blurbmsg.fadeToggle(600);
 			_navsig.slideToggle(800);
 			_topContacts.toggleClass("extra-padding nav-mode");
 			$(_teasermsg).toggleClass("expand-page");
 
-			// add the contact button shortcut for small screen sizes
+			// summon contact button shortcut for small screen sizes only
 			if ($(window).width() < 768) {
 				_contactitems.fadeToggle(200);
 				$("#contactbtn").fadeToggle(800);
 			}
-
 			if(!navmode) {
 				_contactitems.css({fontSize:"1em"});
 			}
@@ -231,7 +231,7 @@ var bio = {
 				_contactitems.css({fontSize:"1.3em"});
 			}
 			navmode = !navmode;
-
+			// toggle open of all resume sections with each transform
 			$("#main .chartContainer").toggleClass("rolledChart");
 		}
 
@@ -239,12 +239,12 @@ var bio = {
 			_header = $("header"),
 			_blurbmsg= $(".blurb-message"),
 			_navsig = $("#nav-signature"),
-			_contactitems = $("#topContacts li"),
+			_contactitems = $("#topContacts > li"),
 			navmode = false; // checks state of whether in nav mode
 
 		_navsig.hide(); // not visible in default page load
 
-		// get sceeen height and last header section element height
+		// Handler to toggle navmode: get sceeen height and last header section element height
 		// set the event handler with a debounce so that extra scrolls don't wonk things up
 		// Note: 50ms chosen as an interval limit because higher values may lag transform pt
 		$(document).scroll(debounce(function() {
@@ -264,6 +264,12 @@ var bio = {
 				}
 			}
 		}, 50));
+
+		// Hander to make the contacts slide out menu for mobile mode
+		_contactbtn.click(function(){
+			_contactbtn.toggleClass("btn-active");
+			_contactbtn.find("#contactsdrawer").slideToggle(600, "linear");
+		});
 	}
 };
 
