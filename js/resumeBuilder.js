@@ -154,6 +154,9 @@ var bio = {
 	// Renders html for Bio section content
 	render: function() {
 		var _topContacts = $("#topContacts");
+		_topContacts.prepend(HTMLcontactBtn);	// apppend the signature elements in nav (initial state hidden)
+		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
+		var _contactbtn = $("#contactbtn");
 		_topContacts.prepend(HTMLblurbMsg.replace("%data%", bio.blurbMessage));
 		$("#sayMyName").prepend(HTMLheaderRole.replace("%data%", bio.role))
 					.prepend(HTMLheaderName.replace("%data%", bio.name))
@@ -169,9 +172,9 @@ var bio = {
 			else {
 				_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 			}
+
+			_contactbtn.find("#contactsdrawer").append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 		}
-
-
 
 		// fill in skills section
 		$("#skillsChart").append(HTMLchartButton); //close button for skills section
@@ -183,17 +186,8 @@ var bio = {
 
 		// append the footer section content
 		$("#letsConnect").append(HTMLfooterStart.replace("%data%", bio.footerInfo));
-	
-		// apppend the signature elements in nav (initial state hidden)
-		_topContacts.prepend("<div id='contactbtn'><span class='icon-handlogo'></span></div>");
-		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
-		var _contactbtn = $("#contactbtn");
-		_contactbtn.append("<ul id='contactsdrawer'><li class='conbtn'>A</li><li class='conbtn'>B</li><li class='conbtn'>C</li></ul>");
 
-		// dynamically adjust height of the teaser msg element to browser height
-		var _teasermsg = $(".teaser-message");
-		var adjHeight = $(window).height() - _teasermsg.offset().top;
-		_teasermsg.css("height", adjHeight);
+		
 
 		// lets make a cool scroll distance detector!
 		// First, borrowing underscore's debounce function to limit navmode calls...
@@ -242,8 +236,13 @@ var bio = {
 			_contactitems = $("#topContacts > li"),
 			navmode = false; // checks state of whether in nav mode
 
-		_navsig.hide(); // not visible in default page load
+		_navsig.hide(); // not visible on default page load
 
+		// dynamically adjust height of the teaser msg element to browser height
+		var _teasermsg = $(".teaser-message");
+		var adjHeight = $(window).height() - _teasermsg.offset().top;
+		_teasermsg.css("height", adjHeight);
+		
 		// Handler to toggle navmode: get sceeen height and last header section element height
 		// set the event handler with a debounce so that extra scrolls don't wonk things up
 		// Note: 50ms chosen as an interval limit because higher values may lag transform pt
@@ -251,15 +250,11 @@ var bio = {
 			if(!navmode) {
 				// check for distance scrolled in header section
 				if($(this).scrollTop() > _teasermsg.offset().top) {
-					// _contactitem.css({fontSize:"1em"});
-					// _topContacts.css({position:'fixed', top:0, "z-index":4, padding:"1px"});
 					navTransform();
 				}
 			}
 			else {
 				if($(this).scrollTop() < _teasermsg.offset().top) {
-					// _contactitem.css({fontSize:"1.3em"}); //problem: size is dependent on screen size...maybe use a toggle class to save state?
-					// _topContacts.css({position:'static', "z-index":1, padding:"1em"});
 					navTransform();
 				}
 			}

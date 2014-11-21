@@ -153,6 +153,7 @@ hr {
 
 /* center an element in div */
 .center-hack {
+	position: absolute;
 	top: 50%; 
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
@@ -308,7 +309,7 @@ header>span {
 	transition: width .5s ease-out; */
 }
 
-#topContacts .contactBadge {
+#topContacts > .contactBadge {
 	font-size: 1.5em;
 	margin-top: 50%;
 	margin-bottom: 50%;
@@ -391,6 +392,7 @@ header>span {
 	width: 1em;
 	height: 1em;
 	margin-left: 0;
+	position: relative;
 }
 .btn-active {
 	background: #fff;
@@ -403,7 +405,7 @@ header>span {
 	border-radius: 2em;
 	left: 0;
 	right: 0;
-	top: 0;
+	top: 30%;
 	display: -ms-flexbox;
   	display: -webkit-flex;
   	display: flex;
@@ -416,7 +418,13 @@ header>span {
   	display: none;
   	z-index: -1;
   	padding: 5px;
-  	padding-top: 1.5em;
+  	padding-top: 1em;
+}
+
+#contactsdrawer .contactBadge {
+	font-size: .75em;
+	/*margin-top: 50%;
+	margin-bottom: 50%;*/
 }
 
 /* --------------------------------------------------------------------- */
@@ -676,7 +684,7 @@ header>span {
 @media only screen and (max-width: 400px) {
 
 	#sayMyName {
-		font-size: 1.5em;
+		font-size: 1.6em;
 	}
 	
 	.extra-padding {

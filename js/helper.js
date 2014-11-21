@@ -21,6 +21,8 @@ var HTMLchartButton = "<p class='chartBtn'><span>-</span></p>"; //added to offer
 
 var HTMLcontactLink = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem'>link</a></li>";
 var HTMLcontactGeneric = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem'>%data%</span></li>";
+var HTMLcontactBtn = "<div id='contactbtn'><span class='icon-handlogo'></span><ul id='contactsdrawer'></ul></div>";
+var HTMLcontactShorty = "<li class='conbtn'><span class='icon-%badge% contactBadge center-hack'></span><span class='contactItem'>%data%</span></li>";
 
 var HTMLmobile = "<li class='flex-item'><span class='orange-text'>mobile</span><span class='white-text'>%data%</span></li>";
 var HTMLemail = "<li class='flex-item'><span class='orange-text'>email</span><span class='white-text'>%data%</span></li>";
