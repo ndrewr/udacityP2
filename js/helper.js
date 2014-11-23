@@ -19,8 +19,9 @@ var HTMLheaderRole = "<span>%data%</span>";
 
 var HTMLchartButton = "<p class='chartBtn'><span>-</span></p>"; //added to offer a section close button
 
-var HTMLcontactLink = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem'>link</a></li>";
+var HTMLcontactLink = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem' target='_blank'>link</a></li>";
 var HTMLcontactGeneric = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem'>%data%</span></li>";
+var HTMLcontactPhone = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem phoneLink'>%data%</span><a class='callbtn' href='tel:%phone%'>call</a></li>";
 var HTMLcontactBtn = "<div id='contactbtn'><span class='icon-handlogo'></span><ul id='contactsdrawer'></ul></div>";
 var HTMLcontactShorty = "<li class='conbtn'><span class='icon-%badge% contactBadge center-hack'></span><span class='contactItem'>%data%</span></li>";
 
@@ -48,7 +49,7 @@ var HTMLworkLocation = "<div class='location-text'>%data%</div>";
 var HTMLworkDescription = "<p><br>%data%</p>";
 
 var HTMLprojectStart = "<h3>Projects</h3><div id='projectScreen'><a id='prevBtn' href='#'></a><img id='projectImage' class='center-hack' src=''><a id='nextBtn' href='#'></a></div><div id='projectDetail'></div><div id='projectSelector'></div>";
-var HTMLprojectTitle = "<h4>Now Showing:</h4><a class='projectTitle' href='#'>%data%</a>";
+var HTMLprojectTitle = "<h4>Now Showing:</h4><a class='projectTitle' href='%url%' target='_blank'>%data%</a>";
 var HTMLprojectDates = "<div class='date-text'><h4>Dates Worked:</h4><p class='projectInfo'>%data%</p></div>";
 var HTMLprojectDescription = "<p class='projectInfo'>%data%</p>";
 var HTMLprojectImage = "<img id='projectScreen' class='' src='%data%'>";

@@ -53,25 +53,29 @@ var projects = {
 			"title":"Mock Site",
 			"datesworked":"Oct 2014",
 			"description":"Produce a sample portfolio layout with CSS effects. The site can adapt to different screen sizes.",
-			"images":["images/mockSite1.png","images/mockSite2.png","images/mockSite4.jpg"]
+			"images":["images/mockSite1.png","images/mockSite2.png","images/mockSite4.jpg"],
+			"url":"http://uncleoptimus.github.io/udacityP1"
 		},
 		{
 			"title":"Awesome Blog",
 			"datesworked":"Jan 2014 - Mar 2014",
 			"description":"Simply a blog that enables awesomeness to flow from keyboard to screen. Yes. Flow. Like water or air or something flowy. Whooosh.",
-			"images":["images/wee-ki1.png","images/wee-ki2.png","images/wee-ki3.jpg"]
+			"images":["images/wee-ki1.png","images/wee-ki2.png","images/wee-ki3.jpg"],
+			"url":"http://wiki-ac.appspot.com"
 		},
 		{
 			"title":"368+ Mobile",
 			"datesworked":"Jul 2013 - Aug 2014",
 			"description":"A mobile-optimized web app for 368+, the law enforcement app meant to aid investigation of elder abuse cases.",
-			"images":["images/368mobile1.png","images/368mobile2.png","images/368mobile3.png","images/368mobile4.png","images/368mobile5.jpg"]
+			"images":["images/368mobile1.png","images/368mobile2.png","images/368mobile3.png","images/368mobile4.png","images/368mobile5.jpg"],
+			"url":"http://www.m368demo.appspot.com"
 		},
 		{
 			"title":"Acme Digital",
 			"datesworked":"Jul 2012 - Sept 2012",
 			"description":"Created a product page for a new line of products and handled maintenance and updates.",
-			"images":["images/acmeDigital1.png","images/acmeDigital2.png","images/acmeDigital3.jpg"]
+			"images":["images/acmeDigital1.png","images/acmeDigital2.png","images/acmeDigital3.jpg"],
+			"url":"http://www.acmetn.com"
 		}
 	],
 
@@ -90,7 +94,7 @@ var projects = {
 		$(".projectThumb:first").addClass("pressed");
 
 		// initialize first project display		
-		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title))
+		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title).replace("%url%", projects.projects[0].url))
 						.append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked))
 						.append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
 		$("#projectScreen img").attr("src", projects.projects[0].images[0]).attr("data-pic", 1).attr("data-project", 0);
@@ -99,7 +103,7 @@ var projects = {
 		// handler for selecting projects to view
 		$("#projectSelector").on("click", ".projectThumb", function() {
 			var selection = $(this).attr("id");
-			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title))
+			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title).replace("%url%", projects.projects[selection].url))
 							.append(HTMLprojectDates.replace("%data%", projects.projects[selection].datesworked))
 							.append(HTMLprojectDescription.replace("%data%", projects.projects[selection].description));
 			$("#projectScreen img").attr("src", projects.projects[selection].images[0])
@@ -157,6 +161,7 @@ var bio = {
 		_topContacts.prepend(HTMLcontactBtn);	// apppend the signature elements in nav (initial state hidden)
 		_topContacts.prepend("<a id='nav-signature' href='#'><span>A R C</span></a");
 		var _contactbtn = $("#contactbtn");
+		var _contactsDrawer = $("#contactsdrawer");
 		_topContacts.prepend(HTMLblurbMsg.replace("%data%", bio.blurbMessage));
 		$("#sayMyName").prepend(HTMLheaderRole.replace("%data%", bio.role))
 					.prepend(HTMLheaderName.replace("%data%", bio.name))
@@ -168,12 +173,20 @@ var bio = {
 		for(var contact in bio.contacts) {
 			if(test_title.test(bio.contacts[contact])) {
 				_topContacts.append(HTMLcontactLink.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+				_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 			}
 			else {
-				_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+				// add "dial btn" functionality for phone contact
+				if(contact === "mobile") {
+					_topContacts.append(HTMLcontactPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
+					_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+					_contactsDrawer.find("li:last").append("<a class='callbtn' href='tel:%phone%'>call</a>".replace("%phone", bio.contacts["mobile"]));
+				}
+				else {
+					_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+				}
 			}
 
-			_contactbtn.find("#contactsdrawer").append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 		}
 
 		// fill in skills section
@@ -242,7 +255,7 @@ var bio = {
 		var _teasermsg = $(".teaser-message");
 		var adjHeight = $(window).height() - _teasermsg.offset().top;
 		_teasermsg.css("height", adjHeight);
-		
+
 		// Handler to toggle navmode: get sceeen height and last header section element height
 		// set the event handler with a debounce so that extra scrolls don't wonk things up
 		// Note: 50ms chosen as an interval limit because higher values may lag transform pt
@@ -260,10 +273,23 @@ var bio = {
 			}
 		}, 50));
 
-		// Hander to make the contacts slide out menu for mobile mode
+		// Handler to make the contacts slide out menu for mobile mode
 		_contactbtn.click(function(){
 			_contactbtn.toggleClass("btn-active");
 			_contactbtn.find("#contactsdrawer").slideToggle(600, "linear");
+		});
+
+		// Handler to add extra press function to phone links. 
+		// Will make a call btn appear, and disappear on mouseleave while restoring og hover effect
+		_topContacts.find("li").on("click", ".phoneLink", function() {
+			$(this).hide();
+			$(this).next("a").fadeIn();
+		}).on("mouseleave", ".callbtn", (function() {
+			$(this).fadeOut();
+		})).hover(function() {
+			$(this).find(".phoneLink").show();
+		}, function() {
+			$(this).find(".phoneLink").hide();
 		});
 	}
 };

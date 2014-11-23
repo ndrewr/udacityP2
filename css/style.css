@@ -360,9 +360,11 @@ header>span {
 	color: #fff;
 	border-radius: 2em;
 	/* create impression of 3d button */
-	box-shadow: 0 10px 0 -6px #6c240f; 
+	box-shadow: 0 10px 0 -6px #6c240f;
 	background: #e35b31;
 	font: 2.5em 'Ubuntu Condensed', sans-serif;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
 }
 
 #contactbtn:active {
@@ -394,6 +396,7 @@ header>span {
 	margin-left: 0;
 	position: relative;
 }
+
 .btn-active {
 	background: #fff;
 	color: #e35b31;
@@ -423,9 +426,33 @@ header>span {
 
 #contactsdrawer .contactBadge {
 	font-size: .75em;
-	/*margin-top: 50%;
-	margin-bottom: 50%;*/
 }
+
+/* add extra effects to phone contact buttons */
+.callbtn {
+	display: none;
+	background: #095D1A;
+	padding: 8px;
+	border-radius: 1.5em;
+	font-size: 1em;
+	color: #fff;
+	box-shadow: 0 4px 0 #04250a;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+
+.callbtn:active {
+	background: #04250a;
+	box-shadow: 0 1px 0 #04250a;
+	-webkit-transform: translate(0, 3px);
+	transform: translate(0, 3px);
+}
+
+.callbtn:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
 
 /* --------------------------------------------------------------------- */
 /* Main Element styles */
