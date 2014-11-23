@@ -176,14 +176,14 @@ var bio = {
 				_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 			}
 			else {
-				// add "dial btn" functionality for phone contact
+				// add "dial btn" functionality for phone contacts
 				if(contact === "mobile") {
 					_topContacts.append(HTMLcontactPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
-					_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
-					_contactsDrawer.find("li:last").append("<a class='callbtn' href='tel:%phone%'>call</a>".replace("%phone", bio.contacts["mobile"]));
+					_contactsDrawer.append(HTMLcontactShortyPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
 				}
 				else {
 					_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+					_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 				}
 			}
 
@@ -274,22 +274,36 @@ var bio = {
 		}, 50));
 
 		// Handler to make the contacts slide out menu for mobile mode
-		_contactbtn.click(function(){
+		_contactbtn.click(function(e){
+			console.log(e.target.nodeName);
+			if(e.target.nodeName === "A") return false;
 			_contactbtn.toggleClass("btn-active");
-			_contactbtn.find("#contactsdrawer").slideToggle(600, "linear");
+			_contactsDrawer.slideToggle(600, "linear");
 		});
 
 		// Handler to add extra press function to phone links. 
 		// Will make a call btn appear, and disappear on mouseleave while restoring og hover effect
-		_topContacts.find("li").on("click", ".phoneLink", function() {
+		_topContacts.find("li").on("click", ".phoneLink", function(e) {
+			console.log("a phonelink has been pressed!");
+			e.preventDefault();
+			e.stopPropagation();
 			$(this).hide();
 			$(this).next("a").fadeIn();
 		}).on("mouseleave", ".callbtn", (function() {
+			console.log("focus has exited btn!");
 			$(this).fadeOut();
 		})).hover(function() {
 			$(this).find(".phoneLink").show();
 		}, function() {
+			console.log("the naughty hover out callback is fired!");
 			$(this).find(".phoneLink").hide();
+		});
+
+		_contactsDrawer.on("click", ".callbtn-short", function() {
+			$(this).hide();
+			$(this).prev(".phoneLink").show();
+
+
 		});
 	}
 };

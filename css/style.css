@@ -315,11 +315,11 @@ header>span {
 	margin-bottom: 50%;
 }
 
-#topContacts > li:hover .contactBadge {
+#topContacts li:hover .contactBadge {
 	display: none;
 }
 
-#topContacts > li:hover .contactItem {
+#topContacts li:hover .contactItem {
 	display: inherit;
 	font-size: .7em;
 }
@@ -406,6 +406,7 @@ header>span {
 	list-style: none;
 	background: #081a4f;
 	border-radius: 2em;
+	border: 2px solid #e35b31;
 	left: 0;
 	right: 0;
 	top: 30%;
@@ -420,7 +421,7 @@ header>span {
   	position: absolute;
   	display: none;
   	z-index: -1;
-  	padding: 5px;
+  	padding: 3px;
   	padding-top: 1em;
 }
 
@@ -441,16 +442,46 @@ header>span {
 	transition: all .2s ease-in-out;
 }
 
-.callbtn:active {
+.callbtn:active,
+.callbtn-short:active {
 	background: #04250a;
 	box-shadow: 0 1px 0 #04250a;
 	-webkit-transform: translate(0, 3px);
 	transform: translate(0, 3px);
+	text-decoration: none;
 }
 
-.callbtn:hover {
+.callbtn:hover,
+.callbtn-short {
 	text-decoration: none;
 	color: #fff;
+}
+
+.callbtn-short {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 3;
+
+	display: none;
+	box-sizing: border-box;
+	background: #095D1A;
+	padding: 5px;
+	margin: 4px;
+	margin-bottom: 6px;
+	border-radius: 1.5em;
+	font-size: .5em;
+	color: #fff;
+	box-shadow: 0 4px 0 #04250a;
+}
+
+.callbtn-short:active {
+	background: #04250a;
+	box-shadow: 0 1px 0 #04250a;
+	-webkit-transform: translate(0, 3px);
+	transform: translate(0, 3px);
 }
 
 
@@ -737,6 +768,23 @@ header>span {
 		margin: 0;
 		right: 15px;
 		top: 10px;
+	}
+
+	.callbtn {
+		padding: 4px;
+		border-radius: 1.5em;
+		font-size: .5em;
+		box-shadow: 0 4px 0 #04250a;
+		-webkit-transition: none;
+		transition: none;
+	}
+
+	.callbtn:active {
+		-webkit-transform: none;
+		transform: none;
+		box-shadow: none;
+
+		position: static;
 	}
 
 	#skills li {
