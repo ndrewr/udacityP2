@@ -6,22 +6,18 @@ Don't worry, you'll learn what's going on in this file throughout the course. Yo
 
 Cameron Pittman
 
-Addendum dumdumdum. Modified the HTML strings and added some aditional ones as I saw fit. - Andrew Roy Chen
+Thx Cam! Addendum dumdumdom. Modified the HTML strings and added some aditional ones as I saw fit. - Andrew Roy Chen, Front-End student
 */
 
-
-/*
-These are HTML strings. As part of the course, you'll be using JavaScript functions
-replace the %data% placeholder text you see in them.
-*/
 var HTMLheaderName = "<h1 id='name'>%data%</h1>";
 var HTMLheaderRole = "<span>%data%</span>";
 
-var HTMLchartButton = "<p class='chartBtn'><span>-</span></p>"; //added to offer a section close button
+var HTMLchartButton = "<p class='chartBtn'><span class='center-hack'>-</span></p>"; //added to offer a section close button
 
-var HTMLcontactLink = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem' target='_blank'>link</a></li>";
-var HTMLcontactGeneric = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem'>%data%</span></li>";
-var HTMLcontactPhone = "<li class='resumeOrange'><span class='icon-%badge% contactBadge'></span><span class='contactItem phoneLink'>%data%</span><a class='callbtn' href='tel:%phone%'>call</a></li>";
+// diff btwn contactPhone and contactShorty is 'shorty' strings deal with nav shortcut menu items 
+var HTMLcontactLink = "<li><span class='icon-%badge% contactBadge'></span><a href='%data%' class='contactItem' target='_blank'>link</a></li>";
+var HTMLcontactGeneric = "<li><span class='icon-%badge% contactBadge'></span><span class='contactItem'>%data%</span></li>";
+var HTMLcontactPhone = "<li><span class='icon-%badge% contactBadge'></span><span class='contactItem phoneLink'>%data%</span><a class='callbtn' href='tel:%phone%'>call</a></li>";
 var HTMLcontactBtn = "<div id='contactbtn'><span class='icon-handlogo'></span><ul id='contactsdrawer'></ul></div>";
 var HTMLcontactShorty = "<li class='conbtn'><span class='icon-%badge% contactBadge center-hack'></span><a href='%data%' class='contactItem' target='_blank'>link</a></li>";
 var HTMLcontactShortyPhone = "<li class='conbtn'><span class='icon-%badge% contactBadge center-hack phoneLink'></span><a class='callbtn-short ' href='tel:%phone%'>call</a></li>";
@@ -41,8 +37,8 @@ var HTMLteaserMsg = "<div class='teaser-message'><span><span class='icon-handlog
 var HTMLskillsStart = "<h3 id=''>Skills at a Glance</h3><ul id='skills' class='flex-box'></ul>";
 var HTMLskills = "<li><span>%data%</span></li>";
 
-var HTMLworkStart = "<h3>Work Experience</h3><ul id='workEntries' class=''></ul>";
-var HTMLworkEntry = "<li><div class='work-entry'></div></li>"; //added this snippet myself
+var HTMLworkStart = "<h3>Work Experience</h3><ul id='workEntries'></ul>";
+var HTMLworkEntry = "<li><div class='work-entry'></div></li>"; //added
 var HTMLworkEmployer = "<a href='#'>%data%</a>";
 var HTMLworkTitle = "<p> - %data%</p>";
 var HTMLworkDates = "<div class='date-text'>%data%</div>";
@@ -53,10 +49,10 @@ var HTMLprojectStart = "<h3>Projects</h3><div id='projectScreen'><a id='prevBtn'
 var HTMLprojectTitle = "<h4>Now Showing:</h4><a class='projectTitle' href='%url%' target='_blank'>%data%</a>";
 var HTMLprojectDates = "<div class='date-text'><h4>Dates Worked:</h4><p class='projectInfo'>%data%</p></div>";
 var HTMLprojectDescription = "<p class='projectInfo'>%data%</p>";
-var HTMLprojectImage = "<img id='projectScreen' class='' src='%data%'>";
+var HTMLprojectImage = "<img id='projectScreen' src='%data%'>";
 var HTMLprojectThumb = "<div class='projectThumb'></div>";
 
-var HTMLeduStart = "<h3>Education</h3><ul id='schools' class=''></ul>";
+var HTMLeduStart = "<h3>Education</h3><ul id='schools'></ul>";
 var HTMLschoolStart = "<div class='education-entry'></div>";
 var HTMLschoolName = "<p><a href='%url%'>%data%";
 var HTMLschoolDegree = " -- %data%</a></p>";
@@ -64,7 +60,6 @@ var HTMLschoolDates = "<p class='date-text'>%data%</p>";
 var HTMLschoolLocation = "<div class='location-text'>%data%</div>";
 var HTMLschoolMajor = "<p><em>Major: %data%</em></p>";
 
-//added a wrapper div for online course entries for styling purposes
 var HTMLonlineClasses = "<h3>Online Classes</h3>";
 var HTMLonlineTitle = "<p>%data%</p>";
 var HTMLonlineSchool = "<div class='education-entry'>ONLINE<a href='#'> - %data%</a>";
@@ -73,7 +68,7 @@ var HTMLonlineURL = "<a href='%data%'>course link</a></div>";
 
 var HTMLfooterStart = "<hr class='feature-divider'><p class='text-center'>%data%</p><hr class='feature-divider'>";
 var internationalizeButton = "<button>Internationalize</button>";
-var googleMap = "<h3>I've Worked Here</h3><div id='map' class=''></div>";
+var googleMap = "<h3>I've Worked Here</h3><div id='map'></div>";
 
 
 /*
@@ -105,9 +100,7 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
-  // OK my code is going here!!
-
-
+  // OK my code is going here!! ...whats supposed to go here!?
 });
 
 
@@ -249,10 +242,6 @@ function initializeMap() {
   pinPoster(locations);
   
 }
-
-/*
-Uncomment all the code below when you're ready to implement a Google Map!
-*/
 
 // Calls the initializeMap() function when the page loads
 window.addEventListener('load', initializeMap);
