@@ -672,6 +672,10 @@ header>span {
 	color: #d9c9cc;
 }
 
+#letsConnect a {
+	font: italic 300 1em 'Ubuntu', sans-serif;
+}
+
 /* RESPONSIVE CSS media queries
 --------------------------------------------------
 /* For small screens, shrink the name header font and adjust spacing */

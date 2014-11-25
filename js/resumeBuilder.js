@@ -31,8 +31,7 @@ var work = {
 
 	// Renders html for Work section content
 	render: function() {
-		$("#workExperience").append(HTMLchartButton); //section close btn
-		$("#workExperience").append(HTMLworkStart);
+		$("#workExperience").append(HTMLchartButton).append(HTMLworkStart);
 		var _workEntries = $("#workEntries");
 		for (var job in work.jobs) {
 			if(job !== 0) {$(".work-entry:last").append("<hr>");}
@@ -81,11 +80,13 @@ var projects = {
 
 	// Renders html for Project section content
 	render: function() {
-		$("#projects").append(HTMLchartButton); //section close button
-		$("#projects").append(HTMLprojectStart);
+		$("#projects").append(HTMLchartButton).append(HTMLprojectStart);
+		var _projectSelector = $("#projectSelector"),
+			_projectImg = $("#projectImage"),
+			_projectDetail = $("#projectDetail");
 		// setup project selector
 		for(var project in projects.projects) {
-			$("#projectSelector").append(HTMLprojectThumb);
+			_projectSelector.append(HTMLprojectThumb);
 			//assign ID# and setup project selector thumbs
 			$(".projectThumb:last").attr("id", project)
 								.css("background", "url(" + projects.projects[project].images[0] + ") 50% 10%/cover no-repeat");
@@ -94,28 +95,28 @@ var projects = {
 		$(".projectThumb:first").addClass("pressed");
 
 		// initialize first project display		
-		$("#projectDetail").prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title).replace("%url%", projects.projects[0].url))
+		_projectDetail.prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title).replace("%url%", projects.projects[0].url))
 						.append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked))
 						.append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
-		$("#projectScreen img").attr("src", projects.projects[0].images[0]).attr("data-pic", 1).attr("data-project", 0);
+		_projectImg.attr("src", projects.projects[0].images[0]).attr("data-pic", 1).attr("data-project", 0);
 
-		/* click handlers */
+		/* ----- handlers ----- */
 		// handler for selecting projects to view
-		$("#projectSelector").on("click", ".projectThumb", function() {
+		_projectSelector.on("click", ".projectThumb", function() {
 			var selection = $(this).attr("id");
-			$("#projectDetail").html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title).replace("%url%", projects.projects[selection].url))
+			_projectDetail.html(HTMLprojectTitle.replace("%data%", projects.projects[selection].title).replace("%url%", projects.projects[selection].url))
 							.append(HTMLprojectDates.replace("%data%", projects.projects[selection].datesworked))
 							.append(HTMLprojectDescription.replace("%data%", projects.projects[selection].description));
-			$("#projectScreen img").attr("src", projects.projects[selection].images[0])
+			_projectImg.attr("src", projects.projects[selection].images[0])
 								.attr("data-pic", 1).attr("data-project", selection);
 		});
 
-		// handler for project image buttons
+		// handler for project image button controls
 		$("#projectScreen").on("click", "a", function(event) {
 			event.preventDefault(); // prevent 'a' tag from redirecting
 			var nextPic;
-			var currentProject = parseInt($("#projectImage").attr("data-project"), 10); //convert data to int
-			var currentPic = parseInt($("#projectImage").attr("data-pic"), 10); //convert data to int
+			var currentProject = parseInt(_projectImg.attr("data-project"), 10); //convert data to int
+			var currentPic = parseInt(_projectImg.attr("data-pic"), 10); //convert data to int
 
 			if ($(event.target).attr("id") === "prevBtn") {
 				nextPic = (currentPic - 1) === 0? projects.projects[currentProject].images.length : (currentPic - 1);
@@ -123,8 +124,7 @@ var projects = {
 			else {
 				nextPic = (currentPic + 1) > projects.projects[currentProject].images.length? 1 : (currentPic + 1);
 			}
-
-			$("#projectScreen img").attr("src", projects.projects[currentProject].images[nextPic-1]).attr("data-pic", nextPic);
+			_projectImg.attr("src", projects.projects[currentProject].images[nextPic-1]).attr("data-pic", nextPic);
 		});
 
 		// Adding 'pressed' class to thumbnails so I can style that state
@@ -186,12 +186,12 @@ var bio = {
 					_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 				}
 			}
-
 		}
 
 		// fill in skills section
-		$("#skillsChart").append(HTMLchartButton); //close button for skills section
-		$("#skillsChart").append(HTMLskillsStart);
+		var _skillsSection = $("#skillsChart");
+		_skillsSection.append(HTMLchartButton); //close button for skills section
+		_skillsSection.append(HTMLskillsStart);
 		var _skills = $("#skills");
 		for(var skill in bio.skills) {
 			_skills.append(HTMLskills.replace("%data%", bio.skills[skill]));
@@ -199,8 +199,6 @@ var bio = {
 
 		// append the footer section content
 		$("#letsConnect").append(HTMLfooterStart.replace("%data%", bio.footerInfo));
-
-		
 
 		// lets make a cool scroll distance detector!
 		// First, borrowing underscore's debounce function to limit navmode calls...
@@ -220,6 +218,7 @@ var bio = {
 		}
 
 		// Then, define a helper function to handle nav mode switch...
+		var _sectionContainers = $(".chartContainer");
 		function navTransform() {
 			_blurbmsg.fadeToggle(600);
 			_navsig.slideToggle(800);
@@ -229,7 +228,7 @@ var bio = {
 			// summon contact button shortcut for small screen sizes only
 			if ($(window).width() < 768) {
 				_contactitems.fadeToggle(200);
-				$("#contactbtn").fadeToggle(800);
+				_contactbtn.fadeToggle(800);
 			}
 			if(!navmode) {
 				_contactitems.css({fontSize:"1em"});
@@ -239,7 +238,7 @@ var bio = {
 			}
 			navmode = !navmode;
 			// toggle open of all resume sections with each transform
-			$("#main .chartContainer").toggleClass("rolledChart");
+			_sectionContainers.toggleClass("rolledChart");
 		}
 
 		var screenheight = $(document).height,
@@ -256,7 +255,8 @@ var bio = {
 		var adjHeight = $(window).height() - _teasermsg.offset().top;
 		_teasermsg.css("height", adjHeight);
 
-		// Handler to toggle navmode: get sceeen height and last header section element height
+		/* ------ Handlers ------ */
+		// Toggle navmode: get sceeen height and last header section element height
 		// set the event handler with a debounce so that extra scrolls don't wonk things up
 		// Note: 50ms chosen as an interval limit because higher values may lag transform pt
 		$(document).scroll(debounce(function() {
@@ -302,8 +302,6 @@ var bio = {
 		_contactsDrawer.on("click", ".callbtn-short", function() {
 			$(this).hide();
 			$(this).prev(".phoneLink").show();
-
-
 		});
 	}
 };
@@ -345,9 +343,9 @@ var education = {
 
 	// Renders html for Eduction section content
 	render: function() {
-		$("#education").append(HTMLchartButton); //close button for edu section
-		/* list out old-school...schooling */
-		$("#education").append(HTMLeduStart);
+		var _edu = $("#education");
+		_edu.append(HTMLchartButton); //close button for edu section
+		_edu.append(HTMLeduStart); // list out old-school...schooling
 		var _schools = $("#schools");
 		for(var school in education.schools) {
 			_schools.append(HTMLschoolStart);
@@ -370,6 +368,7 @@ var education = {
 	}
 };
 
+// uses google maps, above locations data and helper.js routines to construct map with my past locations
 var customMap = {
 	render: function() {
 		$("#whereInTheWorld").append(googleMap);
@@ -385,10 +384,8 @@ $(function() {
 	projects.render();
 	customMap.render();
 
-	$("#main .chartContainer").toggleClass("rolledChart"); //initiate all sections as closed
-
-	// have this animation fire after user has scrolled at least 10pixels...?
-	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em"}, 600, function() {});
+	$(".chartContainer").toggleClass("rolledChart"); //initiate all sections as closed
+	$(".teaserLogo").delay(5000).animate({fontSize: "1.5em"}, 600, function() {});	// fire after 5 secs
 
 	var _chartbtn = $(".chartBtn");
 	// control hover state for chart borders
@@ -401,7 +398,6 @@ $(function() {
 			$(this).parent().css("borderColor", "#b6c4db");
 		}
 	);
-
 	// minimize section charts and toggle button label
 	_chartbtn.click(function() {
 		var _targetSection = $(this).parent();
@@ -411,12 +407,8 @@ $(function() {
 		else {
 			$(this).find("span").html("+");
 		}
-		// _targetSection.find("ul").slideToggle(200);
-		// _targetSection.find("div").slideToggle(400);
-		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger css transition
+		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger transition
 	});
-
-
 });
 
 
