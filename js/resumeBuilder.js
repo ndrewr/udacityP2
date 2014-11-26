@@ -1,6 +1,6 @@
-/* custom javascript for Project 2 Interactive Resume
-/* Project requirements include:
-/*    -modularization of content sections  -function encapsulation
+/*** custom javascript for Project 2 Interactive Resume
+	Project requirements include:
+	-modularization of content sections  -function encapsulation
 --------------------------------------------------------------------- */
 
 // Defines Work section content and display method
@@ -33,7 +33,9 @@ var work = {
 	render: function() {
 		$("#workExperience").append(HTMLchartButton).append(HTMLworkStart);
 		var _workEntries = $("#workEntries");
-		for (var job in work.jobs) {
+		var listLen = work.jobs.length;
+		// add <hr> divider after prev entry, then add next entry
+		for(var job=0; job<listLen; job++) {
 			if(job !== 0) {$(".work-entry:last").append("<hr>");}
 			_workEntries.append(HTMLworkEntry);
 			$(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer))
@@ -85,13 +87,14 @@ var projects = {
 			_projectImg = $("#projectImage"),
 			_projectDetail = $("#projectDetail");
 		// setup project selector
-		for(var project in projects.projects) {
+		var listLen = projects.projects.length;
+		for(var project=0; project<listLen; project++) {
 			_projectSelector.append(HTMLprojectThumb);
 			//assign ID# and setup project selector thumbs
 			$(".projectThumb:last").attr("id", project)
 								.css("background", "url(" + projects.projects[project].images[0] + ") 50% 10%/cover no-repeat");
 		}
-		// initialize first displayed project
+		// initialize first displayed project with 'pressed' class
 		$(".projectThumb:first").addClass("pressed");
 
 		// initialize first project display		
@@ -119,15 +122,15 @@ var projects = {
 			var currentPic = parseInt(_projectImg.attr("data-pic"), 10); //convert data to int
 
 			if ($(event.target).attr("id") === "prevBtn") {
-				nextPic = (currentPic - 1) === 0? projects.projects[currentProject].images.length : (currentPic - 1);
+				nextPic = (currentPic - 1) === 0 ? projects.projects[currentProject].images.length : (currentPic - 1);
 			}
 			else {
-				nextPic = (currentPic + 1) > projects.projects[currentProject].images.length? 1 : (currentPic + 1);
+				nextPic = (currentPic + 1) > projects.projects[currentProject].images.length ? 1 : (currentPic + 1);
 			}
 			_projectImg.attr("src", projects.projects[currentProject].images[nextPic-1]).attr("data-pic", nextPic);
 		});
 
-		// Adding 'pressed' class to thumbnails so I can style that state
+		// Add 'pressed' class to thumbnails so I can style that state, remove from prev selected item 
 		$(".projectThumb").click(function() {
 			$(".pressed").removeClass("pressed");
 			$(this).addClass("pressed");
@@ -193,7 +196,9 @@ var bio = {
 		_skillsSection.append(HTMLchartButton); //close button for skills section
 		_skillsSection.append(HTMLskillsStart);
 		var _skills = $("#skills");
-		for(var skill in bio.skills) {
+
+		var listLen = bio.skills.length;
+		for(var skill = 0; skill<listLen; skill++) {
 			_skills.append(HTMLskills.replace("%data%", bio.skills[skill]));
 		}
 
@@ -275,8 +280,8 @@ var bio = {
 
 		// Handler to make the contacts slide out menu for mobile mode
 		_contactbtn.click(function(e){
-			console.log(e.target.nodeName);
-			if(e.target.nodeName === "A") return false;
+			// for links, do allow the link behavior, don't allow the menu to close
+			// if(e.target.nodeName === "A") e.stopPropagation();
 			_contactbtn.toggleClass("btn-active");
 			_contactsDrawer.slideToggle(600, "linear");
 		});
@@ -347,7 +352,8 @@ var education = {
 		_edu.append(HTMLchartButton); //close button for edu section
 		_edu.append(HTMLeduStart); // list out old-school...schooling
 		var _schools = $("#schools");
-		for(var school in education.schools) {
+		var listLen = education.schools.length;
+		for(var school = 0; school < listLen; school++) {
 			_schools.append(HTMLschoolStart);
 			var _newEduEntry = $(".education-entry:last");
 			_newEduEntry.append(HTMLschoolName.replace("%data%", education.schools[school].name).replace("%url%", education.schools[school].url))
@@ -359,7 +365,8 @@ var education = {
 			}
 		}
 		/* list out online courses */
-		for(var course in education.onlineCourses) {
+		listLen = education.onlineCourses.length;
+		for(var course = 0; course < listLen; course++) {
 			_schools.append(HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school));
 			$(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title))
 									.append(HTMLonlineDates.replace("%data%", education.onlineCourses[course].datesattended))
@@ -371,8 +378,9 @@ var education = {
 // uses google maps, above locations data and helper.js routines to construct map with my past locations
 var customMap = {
 	render: function() {
-		$("#whereInTheWorld").append(googleMap);
-		$("#whereInTheWorld").append(HTMLchartButton);
+		var _worldMap = $("#whereInTheWorld");
+		_worldMap.append(googleMap);
+		_worldMap.append(HTMLchartButton);
 	}
 };
 
