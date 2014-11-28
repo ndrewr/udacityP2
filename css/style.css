@@ -715,7 +715,7 @@ header>span {
 	}
 	
 	.welcome-message {
-		margin-bottom: 1em;
+		margin-bottom: 0;
 	}
 
 	.extra-padding {
@@ -845,6 +845,10 @@ header>span {
 @media only screen and (min-width: 768px) {
 	#sayMyName {
 		font-size: 2em;
+	}
+
+	h3 {
+		font-size: 4.5em;
 	}
 
 	.extra-padding {
