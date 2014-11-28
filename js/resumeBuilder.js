@@ -142,7 +142,7 @@ var projects = {
 var bio = {
 	"name":"Andrew Roy Chen",
 	"role":"< Front End Sherpa >",
-	"welcomeMessage":"welcome to the pimpin' site of",
+	"welcomeMessage":"Currently in ",
 	"blurbMessage":"I delight in slick user experience<br> and aspire to craft better interactions.<br> Let's create something awesome.",
 	"teaserMessage":"Oh. Need to know more?",
 	"contacts": {
@@ -150,7 +150,7 @@ var bio = {
 			"mail":"uncle.optimus@gmail.com",
 			"github2":"https://github.com/uncleoptimus",
 			"linkedin":"http://tinyurl.com/linkdinAC",
-			"location":"Orange County"
+			"location":"Orange County, CA"
 		},
 	"skills": [
 			"javascript", "HTML / CSS3", "jQuery",
@@ -174,20 +174,26 @@ var bio = {
 		// Build out contact links
 		var test_title = /^(http)s?:\/\/.+(uncleoptimus|linkdinAC)$/i;	//fun with regular expressions :D
 		for(var contact in bio.contacts) {
-			if(test_title.test(bio.contacts[contact])) {
-				_topContacts.append(HTMLcontactLink.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
-				_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
-			}
-			else {
-				// add "dial btn" functionality for phone contacts
-				if(contact === "mobile") {
-					_topContacts.append(HTMLcontactPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
-					_contactsDrawer.append(HTMLcontactShortyPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
-				}
-				else {
-					_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+			if(contact !== "location") {
+				// For out-link contacts like to github
+				if(test_title.test(bio.contacts[contact])) {
+					_topContacts.append(HTMLcontactLink.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 					_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
 				}
+				else {
+					// Note: "location" is positioned seperate; "dial btn" functionality for phone contacts uses diff template
+					if(contact === "mobile") {
+						_topContacts.append(HTMLcontactPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
+						_contactsDrawer.append(HTMLcontactShortyPhone.replace("%data%", bio.contacts[contact]).replace("%badge%", contact).replace("%phone%", bio.contacts["mobile"]));
+					}
+					else {
+						_topContacts.append(HTMLcontactGeneric.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+						_contactsDrawer.append(HTMLcontactShorty.replace("%data%", bio.contacts[contact]).replace("%badge%", contact));
+					}
+				}
+			}
+			else {
+				$(".welcome-message").append(bio.contacts[contact]);
 			}
 		}
 
@@ -418,7 +424,3 @@ $(function() {
 		_targetSection.toggleClass("rolledChart"); //add this class to signal state and trigger transition
 	});
 });
-
-
-
-

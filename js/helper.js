@@ -66,7 +66,7 @@ var HTMLonlineSchool = "<div class='education-entry'>ONLINE<a href='#'> - %data%
 var HTMLonlineDates = "<div class='date-text'>%data%</div>";
 var HTMLonlineURL = "<a href='%data%'>course link</a></div>";
 
-var HTMLfooterStart = "<hr class='feature-divider'><p><a href='#'><em>to the top!</em></a></p><p class='text-center'>%data%</p><hr class='feature-divider'>";
+var HTMLfooterStart = "<hr class='feature-divider'><p><a href='#'><em>to the top</em></a></p><p class='text-center'>%data%</p><hr class='feature-divider'>";
 var internationalizeButton = "<button>Internationalize</button>";
 var googleMap = "<h3>I've Worked Here</h3><div id='map'></div>";
 

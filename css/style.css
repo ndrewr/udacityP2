@@ -125,7 +125,8 @@ body {
 }
 
 h3 {
-	font: 4em 'Ubuntu Condensed', sans-serif;
+	font: 600 3.3em 'Josefin Slab', serif;
+/*	font: 4em 'Ubuntu Condensed', sans-serif;*/	
 	color: #887cc0;
 	width: 100%;
 }
@@ -160,8 +161,8 @@ hr {
 
 .chartBtn {
 	font-size: 1.5em;
-	width: 5em;
-	height: 3em;
+	width: 3em;
+	height: 2.5em;
 	background: #b6c4db;
 	border-radius: .5em;
 	position: absolute;
@@ -212,7 +213,8 @@ header {
 }
 
 .welcome-message {
-	font: italic 300 1em 'Ubuntu', sans-serif;
+	font: 600 1.2em 'Josefin Slab', serif;
+/*	font: italic 300 1em 'Ubuntu', sans-serif;*/
 	margin-top: 1em;
 }
 
@@ -227,7 +229,8 @@ header {
 }
 
 .teaser-message {
-	font: 300 1.5em 'Ubuntu', sans-serif;
+	/*font: 300 1.5em 'Ubuntu', sans-serif;*/
+	font: 600 1.5em 'Josefin Slab', serif;
 	display: -ms-flexbox;
   	display: -webkit-flex;
   	display: flex;
@@ -636,6 +639,7 @@ header>span {
 	font-size: 2em;
 	list-style: none;
 	padding-left: 40px;
+	margin-top: 20px;
 }
 
 /* --------------------------------------------------------------------- */
@@ -673,7 +677,8 @@ header>span {
 }
 
 #letsConnect a {
-	font: italic 300 1em 'Ubuntu', sans-serif;
+/*	font: italic 300 1em 'Ubuntu', sans-serif;*/
+	font: italic 600 1em 'Josefin Slab', serif;
 }
 
 /* RESPONSIVE CSS media queries
@@ -682,7 +687,7 @@ header>span {
 /*for iphone 4 screen size*/
 @media only screen and (max-width: 320px) {
 	h3 {
-		font-size: 3.3em;
+		font-size: 2.9em;
 	}
 
 	.welcome-message {
@@ -709,6 +714,10 @@ header>span {
 		font-size: 1.6em;
 	}
 	
+	.welcome-message {
+		margin-bottom: 1em;
+	}
+
 	.extra-padding {
 		padding: 1.1em;
 	}
