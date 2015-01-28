@@ -16,11 +16,9 @@ resumeOrange #e35b31
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?cahfeu');
-	src:url('../fonts/icomoon.eot?#iefixcahfeu') format('embedded-opentype'),
+	src:
 		url('../fonts/icomoon.woff?cahfeu') format('woff'),
-		url('../fonts/icomoon.ttf?cahfeu') format('truetype'),
-		url('../fonts/icomoon.svg?cahfeu#icomoon') format('svg');
+		url('../fonts/icomoon.ttf?cahfeu') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -126,21 +124,21 @@ body {
 
 h3 {
 	font: 600 3.3em 'Josefin Slab', serif;
-/*	font: 4em 'Ubuntu Condensed', sans-serif;*/	
+/*	font: 4em 'Ubuntu Condensed', sans-serif;*/
 	color: #887cc0;
 	width: 100%;
 }
 
 hr {
 	border: 0;
-    border-bottom: 4px solid #b6c4db;
-    background: #e35b31;
+		border-bottom: 4px solid #b6c4db;
+		background: #e35b31;
 }
 
 /* from css-tricks: center any element in non-static div */
 .center-hack {
 	position: absolute;
-	top: 50%; 
+	top: 50%;
 	left: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
@@ -186,14 +184,14 @@ hr {
 /* used by various elements to center align their content elements */
 .flex-box {
 	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
+		display: -webkit-flex;
+		display: flex;
 
-  	-ms-flex-flow: row wrap;
-  	-webkit-flex-flow: row wrap;
-  	flex-flow: row wrap;
-  	align-items: center;
-  	justify-content: space-around;
+		-ms-flex-flow: row wrap;
+		-webkit-flex-flow: row wrap;
+		flex-flow: row wrap;
+		align-items: center;
+		justify-content: space-around;
 }
 
 /* --------------------------------------------------------------------- */
@@ -203,13 +201,13 @@ header {
 	color: #887cc0;
 	font: 2em 'Ubuntu Condensed', sans-serif;
 	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
+		display: -webkit-flex;
+		display: flex;
 
-  	-ms-flex-flow: column wrap;
-  	-webkit-flex-flow: column wrap;
-  	flex-flow: column wrap;
-  	align-items: center;
+		-ms-flex-flow: column wrap;
+		-webkit-flex-flow: column wrap;
+		flex-flow: column wrap;
+		align-items: center;
 }
 
 .welcome-message {
@@ -232,12 +230,12 @@ header {
 	/*font: 300 1.5em 'Ubuntu', sans-serif;*/
 	font: 600 1.5em 'Josefin Slab', serif;
 	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
-  	-ms-flex-flow: column wrap;
-  	-webkit-flex-flow: column wrap;
-  	flex-flow: column wrap;
-  	justify-content: flex-end;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-flow: column wrap;
+		-webkit-flex-flow: column wrap;
+		flex-flow: column wrap;
+		justify-content: flex-end;
 }
 
 .teaserLogo {
@@ -263,7 +261,7 @@ header>span {
 	background: #a42117;
 	list-style: none;
 	width: 100%;
-  	justify-content: center;
+		justify-content: center;
 }
 
 #topContacts > li {
@@ -300,8 +298,8 @@ header>span {
 
 /* this class signifies fixed nav, with partial transparency */
 .nav-mode {
-	position: fixed; 
-	top: 0; 
+	position: fixed;
+	top: 0;
 	z-index: 4;
 	padding: 0;
 	min-height: 85px;
@@ -337,7 +335,7 @@ header>span {
 /* create impression of being 'pressed' */
 #contactbtn:active {
 	top: 16px;
-	box-shadow: inset 0 -5px 0 -6px #6c240f; 
+	box-shadow: inset 0 -5px 0 -6px #6c240f;
 }
 
 .btn-rightpos {
@@ -382,18 +380,18 @@ header>span {
 	right: 0;
 	top: 30%;
 	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
-  	-ms-flex-flow: column;
-  	-webkit-flex-flow: column;
-  	flex-flow: column;
-  	justify-content: space-around;
-  	/* defaults hidden until contact btn press. padding top prevents overlap, z-index layers just below btn */
-  	position: absolute;
-  	display: none;
-  	z-index: -1;
-  	padding: 3px;
-  	padding-top: 1em;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-flow: column;
+		-webkit-flex-flow: column;
+		flex-flow: column;
+		justify-content: space-around;
+		/* defaults hidden until contact btn press. padding top prevents overlap, z-index layers just below btn */
+		position: absolute;
+		display: none;
+		z-index: -1;
+		padding: 3px;
+		padding-top: 1em;
 }
 
 #contactsdrawer .contactBadge {
@@ -451,7 +449,7 @@ header>span {
 /* --------------------------------------------------------------------- */
 /* Main Element styles */
 #main {
-  	justify-content: center;
+		justify-content: center;
 }
 
 /* --------------------------------------------------------------------- */
@@ -505,7 +503,7 @@ header>span {
 	border-bottom: 20px solid transparent;
 	right: 0;
 	position: absolute;
-	top: 50%; 
+	top: 50%;
 	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
@@ -537,7 +535,7 @@ header>span {
 	padding: 10px;
 	font-size: 1.5em;
 }
- 
+
 #projectSelector {
 	width: 75%;
 	height: 120px;
@@ -546,12 +544,12 @@ header>span {
 	margin-left: auto;
 	margin-right: auto;
 	display: -ms-flexbox;
-  	display: -webkit-flex;
-  	display: flex;
-  	-ms-flex-flow: row;
-  	-webkit-flex-flow: row;
-  	flex-flow: row;
-  	cursor: pointer;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-flow: row;
+		-webkit-flex-flow: row;
+		flex-flow: row;
+		cursor: pointer;
 }
 
 .projectTitle {
@@ -598,11 +596,11 @@ header>span {
 /* this class replaces use of aria-pressed...the pseudo element is to overwrite the z-index set above*/
 .pressed {
 	-prefix-box-ordinal-group: 1;
-   -ms-flex-order: -1;
-   order: -1;
-   -prefix-box-flex: 2;
-   flex: 2;
-   border: 4px solid #e35b31;
+		-ms-flex-order: -1;
+		order: -1;
+		-prefix-box-flex: 2;
+		flex: 2;
+		border: 4px solid #e35b31;
 }
 /* makes selected thumb show its colors */
 .pressed:after {
@@ -670,7 +668,7 @@ header>span {
 /* --------------------------------------------------------------------- */
 /* Footer styles */
 #letsConnect {
-	font: 2em 'Ubuntu Mono', sans-serif; 
+	font: 2em 'Ubuntu Mono', sans-serif;
 	text-align: center;
 	background: #081A4F;
 	color: #d9c9cc;
@@ -713,7 +711,7 @@ header>span {
 	#sayMyName {
 		font-size: 1.6em;
 	}
-	
+
 	.welcome-message {
 		margin-bottom: 0;
 	}
@@ -812,7 +810,7 @@ header>span {
 	#education {
 		width: 85%;
 	}
-	
+
 	#whereInTheWorld {
 		width: 85%;
 	}

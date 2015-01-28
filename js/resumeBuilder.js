@@ -97,7 +97,7 @@ var projects = {
 		// initialize first displayed project with 'pressed' class
 		$(".projectThumb:first").addClass("pressed");
 
-		// initialize first project display		
+		// initialize first project display
 		_projectDetail.prepend(HTMLprojectTitle.replace("%data%", projects.projects[0].title).replace("%url%", projects.projects[0].url))
 						.append(HTMLprojectDates.replace("%data%", projects.projects[0].datesworked))
 						.append(HTMLprojectDescription.replace("%data%", projects.projects[0].description));
@@ -130,7 +130,7 @@ var projects = {
 			_projectImg.attr("src", projects.projects[currentProject].images[nextPic-1]).attr("data-pic", nextPic);
 		});
 
-		// Add 'pressed' class to thumbnails so I can style that state, remove from prev selected item 
+		// Add 'pressed' class to thumbnails so I can style that state, remove from prev selected item
 		$(".projectThumb").click(function() {
 			$(".pressed").removeClass("pressed");
 			$(this).addClass("pressed");
@@ -153,7 +153,7 @@ var bio = {
 			"location":"Orange County, CA"
 		},
 	"skills": [
-			"javascript", "HTML / CSS3", "jQuery",
+			"JavaScript", "HTML / CSS3", "jQuery",
 			"Objective-C", "iOS Dev", "Python", "Backbone.js"
 		],
 	"footerInfo":"© Andrew Roy Chen 2014 CBA, Inc. 2014",
@@ -292,7 +292,7 @@ var bio = {
 			_contactsDrawer.slideToggle(600, "linear");
 		});
 
-		// Handler to add extra press function to phone links. 
+		// Handler to add extra press function to phone links.
 		// Will make a call btn appear, and disappear on mouseleave while restoring og hover effect
 		_topContacts.find("li").on("click", ".phoneLink", function(e) {
 			console.log("a phonelink has been pressed!");
