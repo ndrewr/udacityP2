@@ -261,7 +261,7 @@ header>span {
 	background: #a42117;
 	list-style: none;
 	width: 100%;
-		justify-content: center;
+/*		justify-content: center;*/
 }
 
 #topContacts > li {
@@ -850,7 +850,7 @@ header>span {
 	}
 
 	.extra-padding {
-		padding: 2em;
+		padding: 1.8em;
 	}
 }
 

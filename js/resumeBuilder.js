@@ -306,7 +306,6 @@ var bio = {
 		})).hover(function() {
 			$(this).find(".phoneLink").show();
 		}, function() {
-			console.log("the naughty hover out callback is fired!");
 			$(this).find(".phoneLink").hide();
 		});
 
